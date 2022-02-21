@@ -1,6 +1,6 @@
 [book]
 authors = ["Lawliet-Chan"]
-language = "zh-CN"
+language = "en"
 multilingual = false
 src = "src"
-title = "yu教程"
+title = "yu book"
