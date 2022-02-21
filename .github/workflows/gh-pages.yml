@@ -1,0 +1,35 @@
+name: github pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup mdBook
+        uses: peaceiris/actions-mdbook@v1
+        with:
+          mdbook-version: '0.4.1'
+
+      - name: render book
+        run: |
+          mdbook build -d gh-pages ./en
+          mdbook build -d gh-pages ./zh
+          mkdir gh-pages
+          mv ./en/gh-pages gh-pages/en
+          mv ./zh-CN/gh-pages gh-pages/zh-CN
+          mv ./index.html gh-pages          
+
+      - name: Deploy
+        with:
+          emptyCommits: true
+          keepFiles: false
+        env:
+          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: gh-pages
