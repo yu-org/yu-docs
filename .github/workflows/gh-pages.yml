@@ -26,6 +26,7 @@ jobs:
           mv ./zh/gh-pages gh-pages/zh
 
       - name: Deploy
+        uses: peaceiris/actions-gh-pages@v2.5.1
         with:
           emptyCommits: true
           keepFiles: false
