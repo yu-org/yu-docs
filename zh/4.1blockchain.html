@@ -1,0 +1,261 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>blockchain - yu教程</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="1.介绍.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="2.快速开始.html"><strong aria-hidden="true">2.</strong> 快速开始</a></li><li class="chapter-item expanded "><a href="3.基本原理.html"><strong aria-hidden="true">3.</strong> 基本原理</a></li><li class="chapter-item expanded "><a href="4.0组件.html"><strong aria-hidden="true">4.</strong> 组件</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="4.1blockchain.html" class="active"><strong aria-hidden="true">4.1.</strong> blockchain</a></li><li class="chapter-item expanded "><a href="4.2yudb.html"><strong aria-hidden="true">4.2.</strong> yudb</a></li><li class="chapter-item expanded "><a href="4.3txpool.html"><strong aria-hidden="true">4.3.</strong> txpool</a></li><li class="chapter-item expanded "><a href="4.4tripod.html"><strong aria-hidden="true">4.4.</strong> tripod</a></li><li class="chapter-item expanded "><a href="4.5state.html"><strong aria-hidden="true">4.5.</strong> state</a></li><li class="chapter-item expanded "><a href="4.6p2p.html"><strong aria-hidden="true">4.6.</strong> p2p</a></li></ol></li><li class="chapter-item expanded "><a href="5.0dev.html"><strong aria-hidden="true">5.</strong> 开发者手册</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="5.1配置文件.html"><strong aria-hidden="true">5.1.</strong> 配置文件</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="5.1.1节点配置.html"><strong aria-hidden="true">5.1.1.</strong> 节点配置</a></li><li class="chapter-item expanded "><a href="5.1.2各组件配置.html"><strong aria-hidden="true">5.1.2.</strong> 各组件配置</a></li><li class="chapter-item expanded "><a href="5.1.3P2P网络配置.html"><strong aria-hidden="true">5.1.3.</strong> P2P网络配置</a></li></ol></li><li class="chapter-item expanded "><a href="5.2context与chainEnv.html"><strong aria-hidden="true">5.2.</strong> Context 与 chainEnv</a></li><li class="chapter-item expanded "><a href="5.3execution_and_query.html"><strong aria-hidden="true">5.3.</strong> Excutrion 与 Query</a></li><li class="chapter-item expanded "><a href="5.4区块周期.html"><strong aria-hidden="true">5.4.</strong> 区块周期</a></li><li class="chapter-item expanded "><a href="5.5建立区块链网络.html"><strong aria-hidden="true">5.5.</strong> 建立区块链网络</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="5.5.1节点1.html"><strong aria-hidden="true">5.5.1.</strong> node1配置</a></li><li class="chapter-item expanded "><a href="5.5.2节点2.html"><strong aria-hidden="true">5.5.2.</strong> node2配置</a></li><li class="chapter-item expanded "><a href="5.5.3节点3.html"><strong aria-hidden="true">5.5.3.</strong> node3配置</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">yu教程</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#区块链" id="区块链">区块链</a></h1>
+<p><code>blockchain</code>组件就是区块链结构的持久化存储，全网统一维护的链结构。 注意：该结构中并不存储具体的交易数据和交易执行的结果，这部分数据存储在<code>yudb</code>中。</p>
+<h3><a class="header" href="#接口" id="接口">接口</a></h3>
+<p>具体实现的代码在<a href="https://github.com/yu-org/yu/blob/master/core/blockchain/blockchain.go">这里</a><br />
+<code>blockchain</code>实现了基本的链结构的存储和处理逻辑。以下为核心功能的接口，开发者如有需求，可自行定制属于自己的链存储方式和处理逻辑： </p>
+<pre><code class="language-go">func ConvergeType() ConvergeType
+</code></pre>
+<p><code>ConvergeType()</code>返回链的收敛类型（即区块以何种形式被最终确定下来） 
+众所周知，在区块链中，同一个时刻是可能有多个节点出块的，因此形成分叉。 如果不收敛，系统会不知道哪条链为主链的。所以需要收敛，而收敛方式目前最常见的有几种：<br />
+最长子链(Longest)： 最长的那条分支会被认为是主链，该方式会被回滚。<br />
+最重子链(Heaviest): 子链数量最多的分叉会被认为是主链， 该方式会被回滚。<br />
+敲定(Finalize): 通过投票等方式对区块或者链进行投票 来最终敲定某个分叉成为主链，正常情况下被敲定的区块无法被回滚。</p>
+<h2><a class="header" href="#" id=""></a></h2>
+<pre><code class="language-go">func GetGenesis() (*CompactBlock, error)
+func SetGenesis(b *CompactBlock) error
+</code></pre>
+<p>从链内获取创世区块，把创世区块存入链。</p>
+<h2><a class="header" href="#-1" id="-1"></a></h2>
+<pre><code class="language-go">func AppendBlock(b *CompactBlock) error
+func GetBlock(blockHash Hash) (*CompactBlock, error)
+func UpdateBlock(b *CompactBlock) error
+</code></pre>
+<p><code>AppendBlock(block)</code>将区块加入到链的末尾<br />
+<code>GetBlock(blockHash)</code>根据区块哈希获取具体的区块<br />
+<code>UpdateBlock(block)</code>以区块哈希为索引更新区块数据</p>
+<h2><a class="header" href="#-2" id="-2"></a></h2>
+<pre><code class="language-go">func Children(prevBlockHash Hash) ([]*CompactBlock, error)  
+func Finalize(blockHash Hash) error  
+func GetEndBlock() (*CompactBlock, error)
+func LastFinalized() (*CompactBlock, error)
+</code></pre>
+<p><code>Children(blockHash)</code> 根据一个区块哈希获取它的所有子区块<br />
+<code>Finalize(blockHash)</code> 最终共识敲定一个区块<br />
+<code>GetEndBlock()</code> 获取最后一个未敲定区块<br />
+<code>LastFinalized()</code> 获取最后一个敲定的区块</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="4.0组件.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="4.2yudb.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="4.0组件.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="4.2yudb.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

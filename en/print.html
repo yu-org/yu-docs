@@ -1,0 +1,1014 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>yu教程</title>
+        
+        <meta name="robots" content="noindex" />
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="1.介绍.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="2.快速开始.html"><strong aria-hidden="true">2.</strong> 快速开始</a></li><li class="chapter-item expanded "><a href="3.基本原理.html"><strong aria-hidden="true">3.</strong> 基本原理</a></li><li class="chapter-item expanded "><a href="4.0组件.html"><strong aria-hidden="true">4.</strong> 组件</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="4.1blockchain.html"><strong aria-hidden="true">4.1.</strong> blockchain</a></li><li class="chapter-item expanded "><a href="4.2yudb.html"><strong aria-hidden="true">4.2.</strong> yudb</a></li><li class="chapter-item expanded "><a href="4.3txpool.html"><strong aria-hidden="true">4.3.</strong> txpool</a></li><li class="chapter-item expanded "><a href="4.4tripod.html"><strong aria-hidden="true">4.4.</strong> tripod</a></li><li class="chapter-item expanded "><a href="4.5state.html"><strong aria-hidden="true">4.5.</strong> state</a></li><li class="chapter-item expanded "><a href="4.6p2p.html"><strong aria-hidden="true">4.6.</strong> p2p</a></li></ol></li><li class="chapter-item expanded "><a href="5.0dev.html"><strong aria-hidden="true">5.</strong> 开发者手册</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="5.1配置文件.html"><strong aria-hidden="true">5.1.</strong> 配置文件</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="5.1.1节点配置.html"><strong aria-hidden="true">5.1.1.</strong> 节点配置</a></li><li class="chapter-item expanded "><a href="5.1.2各组件配置.html"><strong aria-hidden="true">5.1.2.</strong> 各组件配置</a></li><li class="chapter-item expanded "><a href="5.1.3P2P网络配置.html"><strong aria-hidden="true">5.1.3.</strong> P2P网络配置</a></li></ol></li><li class="chapter-item expanded "><a href="5.2context与chainEnv.html"><strong aria-hidden="true">5.2.</strong> Context 与 chainEnv</a></li><li class="chapter-item expanded "><a href="5.3execution_and_query.html"><strong aria-hidden="true">5.3.</strong> Excutrion 与 Query</a></li><li class="chapter-item expanded "><a href="5.4区块周期.html"><strong aria-hidden="true">5.4.</strong> 区块周期</a></li><li class="chapter-item expanded "><a href="5.5建立区块链网络.html"><strong aria-hidden="true">5.5.</strong> 建立区块链网络</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="5.5.1节点1.html"><strong aria-hidden="true">5.5.1.</strong> node1配置</a></li><li class="chapter-item expanded "><a href="5.5.2节点2.html"><strong aria-hidden="true">5.5.2.</strong> node2配置</a></li><li class="chapter-item expanded "><a href="5.5.3节点3.html"><strong aria-hidden="true">5.5.3.</strong> node3配置</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">yu教程</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#介绍" id="介绍">介绍</a></h1>
+<p>yu(禹) 是一个用golang开发的 简单易用 且 高度可定制化的区块链框架。 现有的绝大多数区块链（公链与联盟链）都可以用 yu 来开发出来。</p>
+<h3><a class="header" href="#我为什么要开发-yu禹" id="我为什么要开发-yu禹">我为什么要开发 yu(禹)</a></h3>
+<p>现如今的区块链框架，要么上手门槛很高，要么可定制化的程度很低，要么社区不活跃停止维护了。所以我才自己开发了
+这款区块链框架。 目的是为了让开发者们可以更简单快速、更深入的上手区块链开发的核心。</p>
+<h3><a class="header" href="#yu禹可以定制哪些功能" id="yu禹可以定制哪些功能">yu(禹)可以定制哪些功能</a></h3>
+<ul>
+<li>可使用多种编程语言开发（尚未完成）</li>
+<li>定制共识算法，包括但不仅限于pow、pos、poa、pbft等等</li>
+<li>自定义区块验证逻辑、交易验证逻辑、从交易池中打包交易的规则</li>
+<li>在区块生成周期的各个阶段插入自定义的操作，包括控制何时执行交易</li>
+<li>自定义链上交易(即Execution，在以太坊中称为交易) 和 查询(query)</li>
+<li>自定义链结构（包括分叉逻辑）和 交易池逻辑</li>
+</ul>
+<h1><a class="header" href="#快速开始" id="快速开始">快速开始</a></h1>
+<h4><a class="header" href="#安装" id="安装">安装</a></h4>
+<pre><code>go get github.com/yu-org/yu
+</code></pre>
+<h4><a class="header" href="#开发一个链上的-execution-和-query" id="开发一个链上的-execution-和-query">开发一个链上的 Execution 和 Query</a></h4>
+<pre><code class="language-go">import (
+	&quot;github.com/yu-org/yu/apps/pow&quot;
+	. &quot;github.com/yu-org/yu/core/types&quot;
+	&quot;github.com/yu-org/yu/chain_env&quot;
+	&quot;github.com/yu-org/yu/common&quot;
+	&quot;github.com/yu-org/yu/context&quot;
+	&quot;github.com/yu-org/yu/startup&quot;
+	&quot;github.com/yu-org/yu/tripod&quot;
+)
+
+type Example struct {
+	*tripod.DefaultTripod
+}
+
+// 此处定制开发一个 Execution
+func (e *Example) Exec(ctx *context.Context, _ *CompactBlock) error {
+	caller := ctx.Caller
+        // 将数据存入链上状态中。
+	e.State.Set(e, caller.Bytes(), []byte(&quot;yu&quot;))
+        // 向链外发射一个event
+	return ctx.EmitEvent(&quot;execute success&quot;)
+}
+
+// 此处定制开发一个 Query
+func (e *Example) Qry(ctx *context.Context, env *chain_env.ChainEnv, _ common.Hash) (interface{}, error) {
+	caller := ctx.Caller
+	value, err := e.State.Get(e, caller.Bytes())
+	return string(value), err
+}
+
+</code></pre>
+<h4><a class="header" href="#在main函数中添加-tripods" id="在main函数中添加-tripods">在main函数中添加 tripods</a></h4>
+<pre><code class="language-go">func NewExample() *Example {
+	df := tripod.NewDefaultTripod(&quot;example&quot;)
+	e := &amp;Example{df}
+
+	// 此处需要手动将自定义的 Execution 注册到 tripod 中，
+	// 这里的 10 表示设置该操作所需要消耗的 lei 的数量 （lei 和 gas 同义）
+	e.SetExec(e.Exec, 10) 
+	// 此处需要手动将自定义的 Query 注册到 tripod 中
+	e.SetQueries(e.Qry)
+
+	return e
+}
+
+func main() {
+	startup.StartUp(pow.NewPow(1024), NewExample())
+}
+</code></pre>
+<h4><a class="header" href="#运行" id="运行">运行</a></h4>
+<pre><code class="language-zsh">go build -o yu-example
+
+// -dc=true 表示使用默认配置，无需另行配置文件。
+./yu-example -dc=true
+ 
+</code></pre>
+<p>至此，一条区块链便启动起来了。 后续可以加入更多区块链节点来<a href="5.5%E5%BB%BA%E7%AB%8B%E5%8C%BA%E5%9D%97%E9%93%BE%E7%BD%91%E7%BB%9C.html">构建区块链网络</a>。</p>
+<h1><a class="header" href="#基本原理" id="基本原理">基本原理</a></h1>
+<h3><a class="header" href="#系统架构" id="系统架构">系统架构</a></h3>
+<h3><a class="header" href="#流程总览" id="流程总览">流程总览</a></h3>
+<p><img src="yu_flow_chart.png" alt="image" /></p>
+<p>从客户端发起一个交易到链上， 会先经过 <code>txpool</code> 的检查， 当检查通过后才会被放入交易池当中 并且 广播给其他区块链节点。<br />
+从 P2P 网络里接收到来自其他节点广播的交易，检查通过后放入 <code>txpool</code> 中（不再广播） </p>
+<p><code>land</code>运行，开始生成区块，并且对区块进行一系列的处理：包括挖矿出块、广播、验证来自其他节点的区块、执行区块内交易、将区块存入链 等等。 在这个过程中
+可以自由控制的事情有非常多,你可以通过它实现你想要的任何共识算法、分片方式、出块时间、打包交易方式、选择何时执行交易 等等。 与<code>blockchain</code>， 
+<code>yudb</code>, <code>state</code>的交互也在这个过程中。</p>
+<p>每个区块经过 <code>land</code> 内所有 自定义<code>tripod</code>的逻辑之后， 会进入下一个区块阶段，生成下一个区块并处理，周而复始下去。</p>
+<h1><a class="header" href="#组件" id="组件">组件</a></h1>
+<h3><a class="header" href="#组件-1" id="组件-1">组件</a></h3>
+<h4><a class="header" href="#核心组件" id="核心组件">核心组件</a></h4>
+<p>以下的 <code>blockchain</code>，<code>yudb</code>，<code>txpool</code> 均为interface， 内置默认的实现， 如果开发者有特殊需求，可自行重新实现interface</p>
+<ul>
+<li>blockchain: 链结构，负责存储区块数据 并 组织链结构与分叉逻辑。</li>
+<li>yudb: <code>yu</code>的数据库，存储所有区块中的具体交易数据、 交易执行后的 <code>event</code> 和 <code>error</code>。</li>
+<li>txpool: 交易池，负责验证和缓存从外部发来的交易。</li>
+<li>state: 存储状态， 储存着每个交易执行后的状态，比如账户余额等。</li>
+<li>tripod: 运行区块链 和 供开发者定制逻辑 的 基本最小单元， 开发者可以定制多个tripod并将他们排序组合装载入<code>land</code>里供框架调用。</li>
+</ul>
+<h4><a class="header" href="#底层组件" id="底层组件">底层组件</a></h4>
+<ul>
+<li>store: 存储层，支持 kv、sql、 fs 等多种形式的存储，且均为interface，开发者可以指定需要的存储引擎（比如kv目前具备<code>badger</code>和<code>boltdb</code>两种存储引擎）
+目前<code>state</code>内的存储是用<code>boltdb</code>实现的， 而<code>blockchain</code>和<code>yudb</code>内的存储使用<code>sqlite</code>实现的</li>
+<li>p2p: 点对点传输网络，用来发现网络中的节点以及传播交易和区块等。 </li>
+<li>keypair: 公私钥的非对称加密算法，目前支持 <code>sr25519</code>和<code>ed25519</code>。该组件以interface形式，可自行扩展其他加密算法。</li>
+</ul>
+<p><img src="yu_arch.png" alt="image" /></p>
+<h1><a class="header" href="#区块链" id="区块链">区块链</a></h1>
+<p><code>blockchain</code>组件就是区块链结构的持久化存储，全网统一维护的链结构。 注意：该结构中并不存储具体的交易数据和交易执行的结果，这部分数据存储在<code>yudb</code>中。</p>
+<h3><a class="header" href="#接口" id="接口">接口</a></h3>
+<p>具体实现的代码在<a href="https://github.com/yu-org/yu/blob/master/core/blockchain/blockchain.go">这里</a><br />
+<code>blockchain</code>实现了基本的链结构的存储和处理逻辑。以下为核心功能的接口，开发者如有需求，可自行定制属于自己的链存储方式和处理逻辑： </p>
+<pre><code class="language-go">func ConvergeType() ConvergeType
+</code></pre>
+<p><code>ConvergeType()</code>返回链的收敛类型（即区块以何种形式被最终确定下来） 
+众所周知，在区块链中，同一个时刻是可能有多个节点出块的，因此形成分叉。 如果不收敛，系统会不知道哪条链为主链的。所以需要收敛，而收敛方式目前最常见的有几种：<br />
+最长子链(Longest)： 最长的那条分支会被认为是主链，该方式会被回滚。<br />
+最重子链(Heaviest): 子链数量最多的分叉会被认为是主链， 该方式会被回滚。<br />
+敲定(Finalize): 通过投票等方式对区块或者链进行投票 来最终敲定某个分叉成为主链，正常情况下被敲定的区块无法被回滚。</p>
+<h2><a class="header" href="#" id=""></a></h2>
+<pre><code class="language-go">func GetGenesis() (*CompactBlock, error)
+func SetGenesis(b *CompactBlock) error
+</code></pre>
+<p>从链内获取创世区块，把创世区块存入链。</p>
+<h2><a class="header" href="#-1" id="-1"></a></h2>
+<pre><code class="language-go">func AppendBlock(b *CompactBlock) error
+func GetBlock(blockHash Hash) (*CompactBlock, error)
+func UpdateBlock(b *CompactBlock) error
+</code></pre>
+<p><code>AppendBlock(block)</code>将区块加入到链的末尾<br />
+<code>GetBlock(blockHash)</code>根据区块哈希获取具体的区块<br />
+<code>UpdateBlock(block)</code>以区块哈希为索引更新区块数据</p>
+<h2><a class="header" href="#-2" id="-2"></a></h2>
+<pre><code class="language-go">func Children(prevBlockHash Hash) ([]*CompactBlock, error)  
+func Finalize(blockHash Hash) error  
+func GetEndBlock() (*CompactBlock, error)
+func LastFinalized() (*CompactBlock, error)
+</code></pre>
+<p><code>Children(blockHash)</code> 根据一个区块哈希获取它的所有子区块<br />
+<code>Finalize(blockHash)</code> 最终共识敲定一个区块<br />
+<code>GetEndBlock()</code> 获取最后一个未敲定区块<br />
+<code>LastFinalized()</code> 获取最后一个敲定的区块</p>
+<h1><a class="header" href="#区块库" id="区块库">区块库</a></h1>
+<p><code>yudb</code>存储所有区块中的具体交易数据、 交易执行后的 <code>event</code> 和 <code>error</code>。</p>
+<h3><a class="header" href="#接口-1" id="接口-1">接口</a></h3>
+<p>代码在<a href="https://github.com/yu-org/yu/blob/master/core/yudb/yudb.go">这里</a><br />
+以下为核心功能的接口，开发者如有需求，可自行定制属于自己的区块库。</p>
+<pre><code class="language-go">func GetTxn(txnHash Hash) (*SignedTxn, error)
+func SetTxn(stxn *SignedTxn) error
+</code></pre>
+<p><code>GetTxn(txnHash)</code>根据交易的哈希值获取交易数据<br />
+<code>SetTxn(stxn)</code>把交易数据存入区块库（以交易哈希为索引）</p>
+<h2><a class="header" href="#-3" id="-3"></a></h2>
+<pre><code class="language-go">func GetTxns(blockHash Hash) ([]*SignedTxn, error)
+func SetTxns(blockHash Hash, txns []*SignedTxn) error
+</code></pre>
+<p><code>GetTxns(blockHash)</code>根据 区块哈希 获取该区块中的所有 交易数据<br />
+<code>SetTxns(blockHash, txns)</code>把一个区块中的所有交易数据存入区块库中（以交易哈希为索引）</p>
+<h2><a class="header" href="#-4" id="-4"></a></h2>
+<pre><code class="language-go">func GetEvents(blockHash Hash) ([]*Event, error)
+func SetEvents(events []*Event) error
+</code></pre>
+<p><code>GetEvents(blockHash)</code>根据 区块哈希 获取该区块中所有的 <code>event</code><br />
+<code>SetEvents(events）</code>把所有<code>event</code>存入区块库中（以自增ID为索引）</p>
+<h2><a class="header" href="#-5" id="-5"></a></h2>
+<pre><code class="language-go">func GetErrors(blockHash Hash) ([]*Error, error)
+func SetError(err *Error) error
+</code></pre>
+<p><code>GetErrors(blockHash)</code>根据 区块哈希 获取该区块中所有的 <code>error</code><br />
+<code>SetError(err)</code> 把所有<code>error</code>存入区块库中（以自增ID为索引）</p>
+<h1><a class="header" href="#交易池" id="交易池">交易池</a></h1>
+<p>接口代码定义在<a href="https://github.com/yu-org/yu/blob/master/core/txpool/txpool.go">这里</a><br />
+以下为核心功能的接口，开发者如有需求，可自行定制属于自己的交易池</p>
+<pre><code class="language-go">func BaseCheck(*SignedTxn) error
+func TripodsCheck(stxn *SignedTxn) error
+func NecessaryCheck(stxn *SignedTxn) error
+</code></pre>
+<p><code>BaseCheck()</code>插入交易数据到交易池的时候，会做一些基础检查，基础检查有: 交易数据是否过大，交易池容量是否已达上限，交易中的签名是否合法，是否有
+交易重复。前三者如果检查不通过会返回错误， 交易重复的时候会忽略该条消息但是不会返回错误。<br />
+<code>TripodsCheck()</code> 基础检查完毕之后，会进行tripods检查，此为开发者自行定义的交易检查规则。<br />
+<code>NecessaryCheck()</code>表示必要性检查，只检查交易数据是否过大、签名是否合法以及 tripods检查。 在节点收到来自P2P网络的区块之后，同步
+区块中的交易数据时做该检查，检查后直接存入<code>yudb</code>。</p>
+<h2><a class="header" href="#-6" id="-6"></a></h2>
+<pre><code class="language-go">func Insert(txn *SignedTxn) error
+</code></pre>
+<p><code>Insert()</code>表示插入交易数据到交易池， 该功能内部带有 <code>BaseCheck</code> 和 <code>TripodsCheck</code>两类检查， 只有通过检查才会被真正插入交易池，否则会返回错误。</p>
+<h2><a class="header" href="#-7" id="-7"></a></h2>
+<pre><code class="language-go">func Pack(numLimit uint64) ([]*SignedTxn, error)
+func PackFor(numLimit uint64, filter func(*SignedTxn) error) ([]*SignedTxn, error)
+</code></pre>
+<p><code>Pack(numLimit)</code>表示从交易池最多打包<code>numLimit</code>个交易，被打包的交易会被标记， 但是不会立马从交易池中删除。<br />
+<code>PackFor(numLimit, filter)</code> 比 <code>Pack</code>多一个过滤功能，所有被打包的交易必须通过<code>filter</code>的过滤，如果<code>filter</code>返回一个错误，则该交易不会被打包。</p>
+<h2><a class="header" href="#-8" id="-8"></a></h2>
+<pre><code class="language-go">func GetTxn(hash Hash) (*SignedTxn, error)
+func Reset(*CompactBlock) error
+</code></pre>
+<p><code>GetTxn(hash)</code> 根据交易哈希值 获取交易数据。<br />
+<code>Reset(*CompactBlock)</code> 在交易池中清除给定区块中的交易，因为它们已经被打包。</p>
+<h1><a class="header" href="#鼎" id="鼎">鼎</a></h1>
+<h2><a class="header" href="#tripod" id="tripod">tripod</a></h2>
+<h4><a class="header" href="#概述" id="概述">概述</a></h4>
+<p><code>tripod</code>是整个yu框架的核心所在，开发者通过实现它的interface来定义自己的业务逻辑。 它由三部分构成：</p>
+<ol>
+<li>自定义区块验证规则和交易检查逻辑</li>
+<li>控制区块的生命周期从而实现深度定制化开发。生命周期有四个阶段：<code>initChain</code>, <code>startBlock</code>, <code>endBlock</code>, <code>finalizeBlock</code>。 其中只有<code>initChain</code>
+是只有在创世区块的时候才被调用的，后面三个是每次区块都会被调用。 （个性化共识算法便可以用区块生命周期来实现）</li>
+<li>自定义 <code>交易</code>(Execution) 和 <code>查询</code>(Query) </li>
+</ol>
+<h4><a class="header" href="#接口-2" id="接口-2">接口</a></h4>
+<p>代码定义在<a href="https://github.com/yu-org/yu/blob/master/core/tripod/tripod.go">这里</a></p>
+<pre><code class="language-go">func GetTripodMeta() *TripodMeta
+func Name() string
+func SetChainEnv(env *ChainEnv)
+</code></pre>
+<p><code>GetTripodMeta()</code>返回一个<code>tripod</code>的元数据，该元数据定义在<a href="https://github.com/yu-org/yu/blob/master/core/tripod/tripod_meta.go">这里。</a>
+该元数据中囊括了 <code>Execution</code> 和 <code>Query</code>列表。<br />
+<code>Name()</code>返回<code>tripod</code>的名称。<br />
+<code>SetChainEnv(*ChainEnv)</code>将<code>ChainEnv</code>装填进<code>tripod</code>中，方便后续调用。(<code>ChainEnv</code>介绍在<a href="5.2context%E4%B8%8EchainEnv.html">context与chainEnv</a>)</p>
+<h2><a class="header" href="#-9" id="-9"></a></h2>
+<pre><code class="language-go">func CheckTxn(*SignedTxn) error
+func VerifyBlock(block *CompactBlock) bool
+</code></pre>
+<p><code>checkTxn()</code>是开发者自定义的交易检查逻辑，前面的章节提到过当外部有交易进来插入<code>txpool</code>的时候，会执行<code>BaseChack</code> 和 <code>TripodsCheck</code> 这两步检查，
+而<code>TripodsCheck</code>便是在这里定义，每个<code>tripod</code>都可以定义自己的交易检查逻辑。<br />
+<code>VerifyBlock()</code>是开发者自定义的区块校验逻辑，区块链每收到一个外部广播来的区块都需要校验过后才能进行后续处理，不同的链有对区块不同的校验方式，所以 
+开发者可以自己定制校验逻辑。 每个<code>tripod</code>都可以定义自己的交易检查逻辑。</p>
+<h2><a class="header" href="#-10" id="-10"></a></h2>
+<pre><code class="language-go">func InitChain() error
+func StartBlock(block *CompactBlock) (needBroadcast bool, err error)
+func EndBlock(block *CompactBlock) error
+func FinalizeBlock(block *CompactBlock) error
+</code></pre>
+<p><code>InitChain()</code>只会在区块链启动的时候被调用一次，专门用来定义处理<code>创世区块</code>。<br />
+<code>StartBlock()</code>定义区块生成时的阶段的逻辑，并且需要返回一个类型为<code>bool</code>的<code>needBroadcast</code>返回值   告诉框架是否需要广播区块。一般如果是本地挖到的区块，是需要广播出去的，如果是从其他节点
+获取到的区块，则没必要广播。<br />
+<code>EndBlock()</code>定义区块结束时候的逻辑，一般会在这里执行交易并且将区块存入区块链中。<br />
+<code>FinalizeBlock()</code>定义区块的<code>敲定阶段</code>（即最终共识）的逻辑。如果区块链是<code>finalize类型的链</code>，则需要定制这部分逻辑，否则便不必要。</p>
+<h2><a class="header" href="#land" id="land">land</a></h2>
+<p><code>land</code>用来装载所有的<code>tripod</code> 供框架调用。</p>
+<h4><a class="header" href="#land内部流程图" id="land内部流程图"><code>land</code>内部流程图</a></h4>
+<p><img src="land%E5%86%85%E9%83%A8%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="image" /></p>
+<h1><a class="header" href="#状态" id="状态">状态</a></h1>
+<p><code>state</code>是链上状态存储，比如A给B发起一次链上转账之后，A和B的账户余额信息都会存储下来。 以下我们把每个交易中的 所有对状态存储的操作 称作一个<code>事务</code>。<br />
+<code>state</code>中事务具备原子性， 比如一个交易中一共有3个修改状态的操作，那么这3个操作要不然都能修改成功，要么都不成功。
+举例如下:</p>
+<pre><code class="language-go">func (a *A) DoTest(ctx *context.Context, env *ChainEnv) error {
+    env.KVDB.Set(a, []byte(&quot;yu&quot;), []byte(&quot;yu&quot;)) // 1. 修改状态
+
+    err := DoOther()
+    if err != nil {
+        return err
+    }
+
+    env.KVDB.Set(a, []byte(&quot;qi&quot;), []byte(&quot;qi&quot;)) // 2. 修改状态
+}
+</code></pre>
+<p>上述代码中，一共有两处 <code>修改状态</code> 的操作， 如果代码在第一处执行成功， 但是在<code>DoOther()</code>这里执行出错返回，那么第二处的<code>修改状态</code>就无法完成了，此时
+框架会一并把第一处的状态修改 取消掉 来保证原子性。</p>
+<p>状态存储的组件名为<code>StateStore</code>，目前内部暂时只支持kvdb的存储形式。 状态存储 以区块为单位，按顺序依次执行每个区块内的事务都存入到数据库中。 </p>
+<p>代码在<a href="https://github.com/yu-org/yu/blob/master/core/state/kv.go">这里</a></p>
+<pre><code class="language-go">func StartBlock(blockHash)
+</code></pre>
+<p><code>StartBlock()</code>在区块链运行的 <code>start block</code>阶段调用，用来告知<code>state</code>当前的区块哈希。</p>
+<pre><code class="language-go">func SetCanRead(blockHash)
+</code></pre>
+<p><code>SetCanRead()</code>设置当前可以被读的区块中的状态。 一个区块交易执行完毕被存入链后，可能并不是立马就允许被读到的，尤其是<code>finalize类型的链</code>，需要
+等到该区块被<code>finalize</code>之后该区块内执行的结果状态才可以被外界读到。 当然<code>非finalize类型的链</code>可以在区块被存进链后立马就被读到。</p>
+<pre><code class="language-go">func Commit() (Hash, error)
+</code></pre>
+<p><code>Commit()</code>提交该区块内所有事务，并返回该区块下的状态树的 <code>stateroot</code>。</p>
+<pre><code class="language-go">func Discard()
+</code></pre>
+<p><code>Discard()</code>取消当前事务。</p>
+<pre><code class="language-go">func DiscardAll()
+</code></pre>
+<p><code>DiscardAll()</code>取消当前区块内所有的事务。</p>
+<pre><code class="language-go">func NextTxn()
+</code></pre>
+<p><code>NextTxn()</code>表示当前事务执行完，开始执行下一个事务。</p>
+<h1><a class="header" href="#p2p网络" id="p2p网络">P2P网络</a></h1>
+<p><code>p2p</code>是区块链的网络根基，对于一个可定制化区块链框架而言，<code>yu</code>允许开发者自由使用P2P网络的功能，开发者可以在<code>ChainEnv</code>中调用到它。 
+该接口的底层实现来源于<a href="https://github.com/libp2p/go-libp2p">libp2p</a></p>
+<h4><a class="header" href="#接口-3" id="接口-3">接口</a></h4>
+<p>代码在<a href="https://github.com/yu-org/yu/tree/master/infra/p2p">这里</a> ，核心功能如下：</p>
+<pre><code class="language-go">    LocalID() peer.ID
+    GetBootNodes() []peer.ID
+    ConnectBootNodes() error
+</code></pre>
+<p><code>LocalID()</code>返回本地节点的 p2p ID<br />
+<code>GetBootNodes()</code> 返回p2p网络中<code>bootnodes</code>节点们的 p2p ID， <code>bootnodes</code>在配置文件中配置。<br />
+<code>ConnectBootNodes()</code> 连接这些<code>bootnodes</code></p>
+<h2><a class="header" href="#-11" id="-11"></a></h2>
+<pre><code class="language-go">    AddTopic(topicName string)
+    PubP2P(topic string, msg []byte) error
+    SubP2P(topic string) ([]byte, error)
+</code></pre>
+<p><code>AddTopic()</code>在P2P网络中增加一个<code>topic</code>，用作订阅发布的主题。<br />
+<code>PubP2P()</code>往这个<code>topic</code>中发送消息。<br />
+<code>SubP2P()</code>从这个<code>topic</code>中订阅数据。</p>
+<h2><a class="header" href="#-12" id="-12"></a></h2>
+<pre><code class="language-go">    RequestPeer(peerID peer.ID, code int, request []byte) (response []byte, err error)
+    SetHandlers(handlers map[int]dev.P2pHandler)
+</code></pre>
+<p><code>RequestPeer()</code>往特定的p2p节点上发送请求数据，<code>code</code>为请求类别，可自定义。（除了<code>100</code>和<code>101</code>，这两个是框架预定义的<code>code</code>,<code>100</code>是P2P节点连接比对数据的时候用；
+<code>101</code>是同步交易数据的时候用）<br />
+<code>SetHandlers()</code>设置处理来自P2P网络里来的请求，每个<code>code</code>对应一个<code>handler</code>， <code>handler</code>的接口在<a href="https://github.com/yu-org/yu/blob/master/core/tripod/dev/funcs.go#L19">这里</a> ，开发者可定制开发这里的逻辑。</p>
+<h1><a class="header" href="#开发者手册" id="开发者手册">开发者手册</a></h1>
+<p>本章节将详细介绍 如何使用 <code>yu</code>开发区块链的细节。即如何构建自己的 <code>tripod</code></p>
+<p>配置文件默认路径是 <code>yu_conf/kernel.toml</code>，如果需要另行配置，请使用 <code>-k</code> 指定配置文件路径。<br />
+当然， 如果不想自己配置文件的话，也可以使用 <code>-dc</code>来启用系统默认配置。 不过需要注意， 系统默认配置是不会去连接任何<code>bootnodes</code>的。</p>
+<h1><a class="header" href="#配置文件" id="配置文件">配置文件</a></h1>
+<p>yu的配置文件的格式是<code>.toml</code>。<br />
+配置内容分以下几个部分， 代码在<a href="https://github.com/yu-org/yu/blob/master/config/config.go">这里</a></p>
+<ul>
+<li>节点自身配置</li>
+<li>各组件配置</li>
+<li>P2P网络相关配置</li>
+</ul>
+<p><code>yu</code> 默认的配置文件路径为 <code>yu_conf/kernel.toml</code>。 当然，如果不想手动填写配置文件，也可以像<a href="2.%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B.html">快速开始</a>里一样启用命令行 
+<code>-dc=true</code> 来利用默认配置。 默认配置的源码地址在<a href="https://github.com/yu-org/yu/blob/master/config/default.go">这里</a></p>
+<h1><a class="header" href="#节点配置" id="节点配置">节点配置</a></h1>
+<h4><a class="header" href="#源码样式" id="源码样式">源码样式：</a></h4>
+<pre><code class="language-go">    // 0: local-node
+	// 1: master-worker
+	RunMode RunMode `toml:&quot;run_mode&quot;`
+	// serve http port
+	HttpPort string `toml:&quot;http_port&quot;`
+	// serve websocket port
+	WsPort string `toml:&quot;ws_port&quot;`
+    // log out level:
+    // panic, fatal, error, warn, info, debug, trace
+    LogLevel string `toml:&quot;log_level&quot;`
+    
+    LeiLimit uint64 `toml:&quot;lei_limit&quot;`
+</code></pre>
+<ul>
+<li>Runmode: 为节点运行方式， 0为单节点形式运行，1为<code>master-worker</code>形式运行（<code>master-worker</code>形式暂不支持） </li>
+<li>HttpPort: http监听地址，服务于外部调用的端口配置。</li>
+<li>WsPort: websocket监听地址，服务于外部调用的端口配置。 </li>
+<li>LogLevel: 打印Log的等级，从上到下依次有 <code>panic</code>, <code>fatal</code>, <code>error</code>, <code>warn</code>, <code>info</code>, <code>debug</code>, <code>trace</code></li>
+<li>LeiLimit： 每个区块里可以被消耗的 <code>lei</code> 的上限</li>
+</ul>
+<h4><a class="header" href="#配置示例" id="配置示例">配置示例：</a></h4>
+<pre><code class="language-toml">run_mode = 0
+
+http_port = &quot;7998&quot;
+
+ws_port = &quot;8998&quot;
+
+log_level = &quot;info&quot;
+
+lei_limit = 50000
+</code></pre>
+<h1><a class="header" href="#各组件配置" id="各组件配置">各组件配置</a></h1>
+<h4><a class="header" href="#blockchain配置源码" id="blockchain配置源码"><code>blockchain</code>配置源码:</a></h4>
+<pre><code class="language-go">type BlockchainConf struct {
+	ChainDB         SqlDbConf `toml:&quot;chain_db&quot;`
+}
+</code></pre>
+<ul>
+<li>ChainDB: 用来存储区块链的sql数据库</li>
+</ul>
+<h4><a class="header" href="#yudb配置源码" id="yudb配置源码"><code>yudb</code>配置源码:</a></h4>
+<pre><code class="language-go">type yudbConf struct {
+	BaseDB SqlDbConf `toml:&quot;base_db&quot;`
+}
+</code></pre>
+<ul>
+<li>BaseDB: 用来存储 <code>yudb</code> 的sql数据库。</li>
+</ul>
+<h4><a class="header" href="#txpool配置源码" id="txpool配置源码"><code>txpool</code>配置源码:</a></h4>
+<pre><code class="language-go">type TxpoolConf struct {
+	PoolSize   uint64    `toml:&quot;pool_size&quot;`
+	TxnMaxSize int       `toml:&quot;txn_max_size&quot;`
+}
+</code></pre>
+<ul>
+<li>PoolSize: 交易池池大小，如果超过该大小，则后续交易将不会被放进交易池</li>
+<li>TxnMaxSize：最大交易的数据量大小，如果一条交易超过该配置，则不会被放进交易池</li>
+</ul>
+<h4><a class="header" href="#state配置源码" id="state配置源码"><code>state</code>配置源码:</a></h4>
+<pre><code class="language-go">type StateConf struct {
+	KV StateKvConf `toml:&quot;kv&quot;`
+}
+</code></pre>
+<p>目前 <code>state</code>只支持<code>kvdb</code>这一种存储方式，未来还会开放更多存储形式 </p>
+<h3><a class="header" href="#配置示例-1" id="配置示例-1">配置示例:</a></h3>
+<pre><code class="language-toml">[block_chain.chain_db]
+sql_db_type = &quot;sqlite&quot;
+dsn = &quot;chain.db&quot;
+
+
+
+[yu_db.base_db]
+sql_db_type = &quot;sqlite&quot;
+dsn = &quot;yudb.db&quot;
+
+[txpool]
+pool_size = 2048
+txn_max_size = 1024000
+
+[state.kv.index_db]
+kv_type = &quot;bolt&quot;
+path = &quot;./state_index.db&quot;
+
+[state.kv.node_base]
+kv_type = &quot;bolt&quot;
+path = &quot;./state_base.db&quot;
+</code></pre>
+<h1><a class="header" href="#p2p网络配置" id="p2p网络配置">p2p网络配置</a></h1>
+<h4><a class="header" href="#源码样式-1" id="源码样式-1">源码样式:</a></h4>
+<pre><code class="language-go">    // For listening from blockchain network.
+	P2pListenAddrs []string `toml:&quot;p2p_listen_addrs&quot;`
+	// To connect other hosts as a p2p network.
+	Bootnodes []string `toml:&quot;bootnodes&quot;`
+
+	ProtocolID string `toml:&quot;protocol_id&quot;`
+	// 0: RSA
+	// 1: Ed25519
+	// 2: Secp256k1
+	// 3: ECDSA
+	NodeKeyType int `toml:&quot;node_key_type&quot;`
+
+	NodeKeyRandSeed int64 `toml:&quot;node_key_rand_seed&quot;`
+
+	NodeKey string `toml:&quot;node_key&quot;`
+
+	// Only RSA has this param.
+	NodeKeyBits int `toml:&quot;node_key_bits&quot;`
+	// When use param 'NodeKey', 'NodeKeyFile' will not work.
+	NodeKeyFile string `toml:&quot;node_key_file&quot;`
+</code></pre>
+<ul>
+<li>P2pListenAddrs: 表示区块链节点监听的P2P协议的地址</li>
+<li>Bootnodes: 链接P2P网络中的其他区块链节点，用来同步历史区块</li>
+<li>ProtocolID: P2P网络里自定义的协议名称</li>
+<li>NodeKeyType: P2P节点的key的加密类型，用来生成p2p地址的 key。目前支持四种加密算法：
+<ul>
+<li><code>0</code>表示<code>RSA</code></li>
+<li><code>1</code>表示<code>Ed25519</code></li>
+<li><code>2</code>表示<code>Secp256k1</code></li>
+<li><code>3</code>表示<code>ECDSA</code></li>
+</ul>
+</li>
+<li>NodeKeyRandSeed: 生成p2p节点的key的种子，用来生成P2P地址的key。当该项不为空时，则无需配置<code>NodeKey</code>了。</li>
+<li>NodeKey：P2P地址的key，用来生成p2p地址。当<code>NodeKeyRandSeed</code>不为空时，该项可不填。</li>
+<li>NodeKeyBits: key的比特位，此配置只有<code>RSA</code>这个加密算法才需要。 其他类型的加密算法并不需要配置该参数。</li>
+<li>NodeKeyFile: 读取p2p地址的key的文件， 只有 <code>NodeKey</code>为空的时候，系统才会读取该配置项。</li>
+</ul>
+<h4><a class="header" href="#配置示例-2" id="配置示例-2">配置示例：</a></h4>
+<pre><code class="language-toml">
+p2p_listen_addrs = [&quot;/ip4/127.0.0.1/tcp/8887&quot;]
+
+protocol_id = &quot;yu&quot;
+
+node_key_type = 1
+node_key_rand_seed = 1
+</code></pre>
+<h1><a class="header" href="#context-与-chainenv" id="context-与-chainenv">Context 与 ChainEnv</a></h1>
+<p>在<a href="2.%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B.html">快速开始</a>中，我们已经看到了如何自定义一个 <code>Execution</code>，此处有两个参数， 一个是<code>context</code>，一个是<code>ChainEnv</code>,他们分别表示两个不同
+的用途。</p>
+<p><a href="https://github.com/yu-org/yu/blob/master/core/context">Context</a> 表示与链外交互的上下文信息。 它包括 <code>调用者地址</code>、<code>传入的参数</code>、
+<code>event</code>、<code>error</code>。</p>
+<ul>
+<li>客户端调用者（即发起交易的人）传入的参数会以json的形式序列化，并按 <code>string -&gt; interface{}</code> 这样map的方式存在 <code>context</code> 中。<br />
+我们通过<code>context</code>获取 客户端调用者的<code>密码学地址</code> 和 调用者传入的<code>参数</code>。  从<code>context</code>
+获取参数的时候可以以<a href="https://github.com/yu-org/yu/blob/master/core/context/params.go">任意go基础类型</a> 去获取参数。
+如果参数类型为自定义的，则需要先通过<code>context.Get(paramName)</code>获取到 <code>interface</code>再自行转化。可以直接获取参数的类型有:</li>
+</ul>
+<pre><code class="language-go">   common.Hash([32]byte)
+   common.Address([20]byte)
+   string
+   []byte
+   bool 
+   int, int8, int16, int32, int64
+   uint, uint8, uint16, uint32, uint64
+   float32, float64
+</code></pre>
+<ul>
+<li>同时如果需要向链外返回 <code>event</code>的时候， 也需要通过<code>context</code>来完成(<code>ctx.EmitEvent(interface{})</code>)。</li>
+</ul>
+<p><a href="https://github.com/yu-org/yu/blob/master/core/chain_env/env.go">ChainEnv</a> 包含了所有链相关的一切环境组件，其中有 <code>blockchain</code>、
+<code>yudb</code>、 <code>txpool</code>、 <code>state</code>、<code>Execute</code> 、 <code>P2pNetwork</code>。 可供开发者直接操作到框架底层的组件。 </p>
+<h1><a class="header" href="#execution-和-query" id="execution-和-query">Execution 和 Query</a></h1>
+<p>正常情况下，开发者们对 <code>Execution</code> 和 <code>Query</code> 会用到的更多一些， 因为这基本是完全业务层面的对外读写接口。所以本节我们看一下在<code>yu</code>当中，如何
+使用它们。代码在<a href="https://github.com/yu-org/yu/blob/master/core/tripod/dev/funcs.go">这里</a></p>
+<p>定义如下:</p>
+<pre><code class="language-go">type (
+	Execution func(ctx *Context, currentBlock *CompactBlock) error
+	
+	Query func(ctx *Context, blockHash Hash) (respObj interface{}, err error)
+	
+	P2pHandler func([]byte) ([]byte, error)
+)
+</code></pre>
+<ul>
+<li>
+<p><code>Execution</code>在以太坊等其他区块链当中被称作<code>交易</code>， 说到底其实就是<code>一次对于链上状态的写操作</code>， 所以这样的操作会同步到全网。<br />
+当需要修改链上状态的时候， 需要调用 <code>chainEnv.KVDB</code>来进行状态修改。注意， <code>chainEnv.kvdb</code>内的<code>set</code>、<code>get</code>、 <code>delete</code>函数的第一个参数必须为当前 <code>tripod</code>
+指针， 比如 <a href="2.%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B.html">快速开始</a>里的 <code>e.State.Set(e, ..., ...)</code><br />
+<code>currentBlock</code>为当前交易所在的区块。<br />
+当需要发送 <code>event</code>到链外的时候，调用 <code>ctx.EmitEvent()</code>。</p>
+</li>
+<li>
+<p><code>Query</code>就是链上查询，它不对链上状态有任何修改，所以该操作并不会被同步到全网。 <code>Query</code>的参数比 <code>Execution</code>多一个 <code>common.Hash</code>， 这个参数是个 
+区块哈希值, 是用来指定查询某个区块时刻上的历史状态的，如果不是查询历史状态，我们可以忽略这个参数。<br />
+状态查询调用 <code>env.KVDB.Get()</code> 或者 <code>env.KVDB.GetByBlockHash()</code>。前者是查询现在主链上已经达成最终共识的状态；后者是查询具体的某个区块上的
+历史状态的。<br />
+<code>respObj</code>用来把查询到的状态值返回到链外。</p>
+</li>
+<li>
+<p><code>P2pHandler</code> 是定义处理处理来自P2P网络中的请求，比如节点需要广播或者对特定节点发送处理请求的时候，可定制此函数来完成自定义功能。</p>
+</li>
+<li>
+<p><code>注入Tripod中</code>：当构建好自己所有的<code>Execution</code> 和 <code>Query</code>的时候， 需要我们调用 <code>tripod.SetExecs()</code>把所有<code>Execution</code>注入到<code>tripod</code>中，
+并且调用<code>tripod.SetQueries()</code>把所有<code>Query</code>注入到<code>tripod</code>中。</p>
+</li>
+<li>
+<p><code>装填到land里</code>：框架提供了一个 <a href="https://github.com/yu-org/yu/blob/master/startup/startup.go#L31">启动入口</a> 只要在启动的时候
+把自己构建的所有 <code>tripod</code> 通过调用 <code>StartUp(...Tripod)</code>来完成装填，由此告知框架我们定制了哪些<code>tripod</code>。</p>
+</li>
+</ul>
+<h4><a class="header" href="#关于-defaulttripod" id="关于-defaulttripod">关于 defaultTripod</a></h4>
+<p>当你不需要自定义控制 <code>区块周期</code>  而只想开发 <code>Execution</code> 和 <code>Query</code> 的时候， <a href="https://github.com/yu-org/yu/blob/master/tripod/default_tripod.go">defaultTripod</a>
+便可以帮你少写很多代码， 你需要将它放在你自定义实现的 <code>tripod</code> 结构体的第一个成员变量即可（必须要省略变量名来达到继承 <code>defaultTripod</code>的效果）。如下：</p>
+<pre><code class="language-go">type Example struct {
+	*tripod.DefaultTripod
+}
+</code></pre>
+<h1><a class="header" href="#区块周期" id="区块周期">区块周期</a></h1>
+<p><a href="4.4tripod.html">前面</a> 有详细介绍过 <code>tripod</code>内关于区块周期的概念。 通过定制区块周期，我们可以实现很多深度的功能， 比如共识算法。 下面我们以
+pow共识 为例，代码原址<a href="https://github.com/yu-org/yu/blob/master/apps/pow/pow.go">在这里</a> 。</p>
+<ul>
+<li>初始化区块链，构造创世区块</li>
+</ul>
+<pre><code class="language-go">    func (p *Pow) InitChain() error {
+        // 构造创世区块，并存入链中。
+        chain := p.env.Chain
+        gensisBlock := &amp;types.CompactBlock{
+            Header: &amp;types.Header{},
+        }
+        err := chain.SetGenesis(gensisBlock)
+        if err != nil {
+            return err
+        }
+        // 启动一个线程来实时拉取P2P网络中来自于其他节点的数据
+        go func() {
+            for {
+                msg, err := p.env.P2pNetwork.SubP2P(StartBlockTopic)
+                if err != nil {
+                    logrus.Error(&quot;subscribe message from P2P error: &quot;, err)
+                    continue
+                }
+                p.msgChan &lt;- msg
+            }
+        }()
+        return nil
+    }
+</code></pre>
+<ul>
+<li>区块开始时，构造区块</li>
+</ul>
+<pre><code class="language-go">func (p *Pow) StartBlock(block *CompactBlock) error {
+    pool := p.env.Pool
+    // 在本地节点出块之前如果收到来自其他节点的区块，验证合法之后将跳过挖矿，直接将该区块存入链中。
+    // 如果没有或者区块不合法，则本地节点开始挖矿。
+    if p.UseBlocksFromP2P(block) {
+        logrus.Infof(&quot;--------USE P2P block(%s)&quot;, block.Hash.String())
+        return nil
+    }
+	
+    // 从交易池中打包交易出来
+    txns, err := pool.Pack(p.packLimit)
+	if err != nil {
+        return err
+    }
+	
+    ......
+    //开始挖矿：计算哈希
+    nonce, hash, err := spow.Run(block, p.target, p.targetBits)
+    if err != nil {
+        return err
+    }
+	
+    ......
+    // 挖到矿以后，将该区块广播到P2P网络中去。
+    return p.env.P2pNetwork.PubP2P(StartBlockTopic, rawBlockByt)
+}
+</code></pre>
+<ul>
+<li>区块结束时</li>
+</ul>
+<pre><code class="language-go">func (*Pow) EndBlock(block *CompactBlock) error {
+    chain := p.env.Chain
+    pool := p.env.Pool
+    
+    // 执行区块中的交易
+    err := p.env.Execute(block)
+    if err != nil {
+        return err
+    }
+    
+    // 将区块存入链中持久化
+    err = chain.AppendBlock(block)
+    if err != nil {
+        return err
+    }
+    
+    return pool.Reset(block)
+}
+
+</code></pre>
+<ul>
+<li>最终共识，敲定区块： 
+由于 pow共识 一般是不需要最终共识的这个敲定阶段的， 因为他们有最长子链或者最重子链等证明算力的方式。 所以这里我们 <code>FinalizeBlock()</code>不用实现。 </li>
+</ul>
+<pre><code class="language-go">func (*Pow) FinalizeBlock(_ *CompactBlock) error {
+	return nil
+}
+</code></pre>
+<p>到此为止，一个基于 sha256的 pow共识机制 便完成了。</p>
+<h1><a class="header" href="#建立区块链网络" id="建立区块链网络">建立区块链网络</a></h1>
+<p>当我们完成<a href="5.0dev.html">配置文件</a>之后，便可以开始自己动手构建区块链网络了。<br />
+本章节中，我们选择编译 <a href="https://github.com/yu-org/yu/tree/master/example/master">example</a> 来启动区块链节点，该example当中
+装载了 <a href="https://github.com/yu-org/yu/tree/master/apps/pow">pow共识</a> 和 <a href="https://github.com/yu-org/yu/tree/master/apps/asset">asset模块</a>.
+当然，我们也可以自定义<code>tripod</code>来替换掉<code>pow</code>和<code>asset</code> 或者增加更多的 <code>tripod</code>。<br />
+首先我们利用<a href="5.5.1%E8%8A%82%E7%82%B91.html">该配置文件</a>在本地启动第一个区块链节点: </p>
+<pre><code class="language-shellscript">INFO[0000] register Execution(Transfer) into Tripod(asset)
+INFO[0000] register Execution(CreateAccount) into Tripod(asset)
+INFO[0000] register Query(QueryBalance) into Tripod(asset)
+INFO[2021-07-25 11:11:09] I am /ip4/127.0.0.1/tcp/8887/p2p/12D3KooWHHzSeKaY8xuZVzkLbKFfvNgPPeKhFBGrMbNzbm5akpqu
+INFO[2021-07-25 11:11:11] start block...................
+INFO[2021-07-25 11:11:11] prev-block hash is (0x0000000000000000000000000000000000000000000000000000000000000000), height is (0)
+INFO[2021-07-25 11:11:11] [[[Mining a new Block!!!]]]
+655111533297e8df7319ce54a0ed74f643940831f388211a1fe985960c82fe75
+INFO[2021-07-25 11:11:11] append block(1)
+INFO[2021-07-25 11:11:13] start block...................
+INFO[2021-07-25 11:11:13] prev-block hash is (0x0000337defe7b4412c872bd42a6d21626ea6a57c3d695379efb8b447d67a1bbd), height is (1)
+INFO[2021-07-25 11:11:13] [[[Mining a new Block!!!]]]
+c64e251d8617a96b80a1d8ff5b74cceef20fa9750bdbc7d095f87791ce01fc88
+INFO[2021-07-25 11:11:13] append block(2)
+INFO[2021-07-25 11:11:15] start block...................
+INFO[2021-07-25 11:11:15] prev-block hash is (0x00005ecc8b50fbc01d32330c5cdd1574a1f0ead527a94f54f326ecaad0473ffb), height is (2)
+INFO[2021-07-25 11:11:15] [[[Mining a new Block!!!]]]
+819da2117ca553f098a1b16c1ad95f2e10498a5df855f5980d8a54c183b302e2
+b062934ef239c48553a43591d451878a1f31abe0a72400f18d7daf4055e22625
+INFO[2021-07-25 11:11:15] append block(3)
+</code></pre>
+<p>注：上面输出的信息中， <code>I am</code>后面的一串地址为node1自己生成的p2p地址， 节点2 和 节点3 需要连接这个地址来构建区块链网络。</p>
+<p>然后我们在另一个路径下写好<a href="5.5.2%E8%8A%82%E7%82%B92.html">配置文件</a>部署第二个节点并启动:</p>
+<pre><code class="language-shellscript">INFO[0000] register Execution(Transfer) into Tripod(asset)
+INFO[0000] register Execution(CreateAccount) into Tripod(asset)
+INFO[0000] register Query(QueryBalance) into Tripod(asset)
+INFO[2021-07-25 11:11:17] I am /ip4/127.0.0.1/tcp/8886/p2p/12D3KooWEsGugZfk1eWUGf4oUXksvfA9QoCX8etf745SVEyiZFXQ
+INFO[2021-07-25 11:11:17] start to sync history from other node
+INFO[2021-07-25 11:11:17] fetch history blocks from (1) to (3)
+INFO[2021-07-25 11:11:19] start block...................
+INFO[2021-07-25 11:11:19] prev-block hash is (0x000046787b43397f7aa4bd1b59ecc9a25e0691086db15ef1613c0e7eeefe3c9a), height is (3)
+INFO[2021-07-25 11:11:19] USE P2P block(0x00007536afbeaf2ed6e84c449b7b17836280490711b85e676b77c21d75d31f22)
+INFO[2021-07-25 11:11:19] append block(4)
+INFO[2021-07-25 11:11:21] start block...................
+INFO[2021-07-25 11:11:21] prev-block hash is (0x00007536afbeaf2ed6e84c449b7b17836280490711b85e676b77c21d75d31f22), height is (4)
+INFO[2021-07-25 11:11:21] USE P2P block(0x0000ebd7752fc71f0cc27740763c27ec9db87dd91fd781f07316744c98196806)
+INFO[2021-07-25 11:11:21] append block(5)
+</code></pre>
+<p>上图输出中 <code>fetch history blocks from (1) to (3)</code> 表示节点2启动时从节点1处获取到从高度1到3的历史区块</p>
+<p>最后我们在第三个路径下写好<a href="5.5.3%E8%8A%82%E7%82%B93.html">配置文件</a>部署第二个节点并启动:</p>
+<pre><code class="language-shellscript">INFO[0000] register Execution(Transfer) into Tripod(asset)
+INFO[0000] register Execution(CreateAccount) into Tripod(asset)
+INFO[0000] register Query(QueryBalance) into Tripod(asset)
+INFO[2021-07-25 11:11:24] I am /ip4/127.0.0.1/tcp/8885/p2p/12D3KooWGcd7wei9ndo1uSZKap3s8X2E3kxN674xGo8prJUBSezD
+INFO[2021-07-25 11:11:24] start to sync history from other node
+INFO[2021-07-25 11:11:24] fetch history blocks from (1) to (7)
+INFO[2021-07-25 11:11:26] start block...................
+INFO[2021-07-25 11:11:26] prev-block hash is (0x00002b56e478552f309b208e90cae288f8f809e2ccefd788730d55ea5e39e1e1), height is (7)
+INFO[2021-07-25 11:11:26] USE P2P block(0x0000f86034bf5e2fe3cd308d08ad0dab1b61c41e7f722c489c14e1215acd0990)
+INFO[2021-07-25 11:11:26] append block(8)
+INFO[2021-07-25 11:11:28] start block...................
+INFO[2021-07-25 11:11:28] prev-block hash is (0x0000f86034bf5e2fe3cd308d08ad0dab1b61c41e7f722c489c14e1215acd0990), height is (8)
+INFO[2021-07-25 11:11:28] USE P2P block(0x000018f47c74dafca4a54596d5284fb320050f1cd3817a87864074cb602e2d15)
+INFO[2021-07-25 11:11:28] append block(9)
+</code></pre>
+<p>上图输出中 <code>fetch history blocks from (1) to (7)</code> 表示节点3启动时从节点1处获取到从高度1到7的历史区块</p>
+<h1><a class="header" href="#节点1配置" id="节点1配置">节点1配置</a></h1>
+<pre><code class="language-toml">run_mode = 0
+http_port = &quot;7999&quot;
+ws_port = &quot;8999&quot;
+log_level = &quot;info&quot;
+lei_limit = 50000
+timeout = 60
+
+p2p_listen_addrs = [&quot;/ip4/127.0.0.1/tcp/8887&quot;]
+protocol_id = &quot;yu&quot;
+node_key_type = 1
+node_key_rand_seed = 1
+
+[nk_db]
+kv_type = &quot;bolt&quot;
+path = &quot;./nk_db.db&quot;
+
+[block_chain.chain_db]
+sql_db_type = &quot;sqlite&quot;
+dsn = &quot;chain.db&quot;
+
+[yu_db.base_db]
+sql_db_type = &quot;sqlite&quot;
+dsn = &quot;yudb.db&quot;
+
+[txpool]
+pool_size = 2048
+txn_max_size = 1024000
+
+[state.kv.index_db]
+kv_type = &quot;bolt&quot;
+path = &quot;./state_index.db&quot;
+
+[state.kv.node_base]
+kv_type = &quot;bolt&quot;
+path = &quot;./state_base.db&quot;
+</code></pre>
+<h1><a class="header" href="#节点2配置" id="节点2配置">节点2配置</a></h1>
+<pre><code class="language-toml">run_mode = 0
+http_port = &quot;7998&quot;
+ws_port = &quot;8998&quot;
+log_level = &quot;info&quot;
+lei_limit = 50000
+timeout = 60
+
+p2p_listen_addrs = [&quot;/ip4/127.0.0.1/tcp/8886&quot;]
+# 该配置即 节点1 启动时 打印输出的 P2P地址
+bootnodes = [&quot;/ip4/127.0.0.1/tcp/8887/p2p/12D3KooWHHzSeKaY8xuZVzkLbKFfvNgPPeKhFBGrMbNzbm5akpqu&quot;]
+protocol_id = &quot;yu&quot;
+node_key_type = 1
+
+[nk_db]
+kv_type = &quot;bolt&quot;
+path = &quot;./nk_db.db&quot;
+
+[block_chain.chain_db]
+sql_db_type = &quot;sqlite&quot;
+dsn = &quot;chain.db&quot;
+
+[yu_db.base_db]
+sql_db_type = &quot;sqlite&quot;
+dsn = &quot;yudb.db&quot;
+
+[txpool]
+pool_size = 2048
+txn_max_size = 1024000
+
+[state.kv.index_db]
+kv_type = &quot;bolt&quot;
+path = &quot;./state_index.db&quot;
+
+[state.kv.node_base]
+kv_type = &quot;bolt&quot;
+path = &quot;./state_base.db&quot;
+</code></pre>
+<h1><a class="header" href="#节点3配置" id="节点3配置">节点3配置</a></h1>
+<pre><code class="language-toml">run_mode = 0
+http_port = &quot;3998&quot;
+ws_port = &quot;3998&quot;
+log_level = &quot;info&quot;
+lei_limit = 50000
+timeout = 60
+
+p2p_listen_addrs = [&quot;/ip4/127.0.0.1/tcp/8885&quot;]
+# 该配置即 节点1 启动时 打印输出的 P2P地址
+bootnodes = [&quot;/ip4/127.0.0.1/tcp/8887/p2p/12D3KooWHHzSeKaY8xuZVzkLbKFfvNgPPeKhFBGrMbNzbm5akpqu&quot;]
+protocol_id = &quot;yu&quot;
+node_key_type = 1
+
+[nk_db]
+kv_type = &quot;bolt&quot;
+path = &quot;./nk_db.db&quot;
+
+[block_chain.chain_db]
+sql_db_type = &quot;sqlite&quot;
+dsn = &quot;chain.db&quot;
+
+[yu_db.base_db]
+sql_db_type = &quot;sqlite&quot;
+dsn = &quot;yudb.db&quot;
+
+[txpool]
+pool_size = 2048
+txn_max_size = 1024000
+
+[state.kv.index_db]
+kv_type = &quot;bolt&quot;
+path = &quot;./state_index.db&quot;
+
+[state.kv.node_base]
+kv_type = &quot;bolt&quot;
+path = &quot;./state_base.db&quot;
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>
