@@ -22,8 +22,7 @@ jobs:
           mdbook build -d gh-pages ./zh
           mkdir gh-pages
           mv ./en/gh-pages gh-pages/en
-          mv ./zh-CN/gh-pages gh-pages/zh-CN
-          mv ./index.html gh-pages          
+          mv ./zh/gh-pages gh-pages/zh
 
       - name: Deploy
         with:
