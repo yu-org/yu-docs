@@ -163,7 +163,7 @@
 <li>自定义区块验证规则和交易检查逻辑</li>
 <li>控制区块的生命周期从而实现深度定制化开发。生命周期有四个阶段：<code>initChain</code>, <code>startBlock</code>, <code>endBlock</code>, <code>finalizeBlock</code>。 其中只有<code>initChain</code>
 是只有在创世区块的时候才被调用的，后面三个是每次区块都会被调用。 （个性化共识算法便可以用区块生命周期来实现）</li>
-<li>自定义 <code>交易</code>(Execution) 和 <code>查询</code>(Query) </li>
+<li>自定义 <code>交易</code>(Execution) 、 <code>查询</code>(Query) 和 <code>P2P请求处理</code>（p2pHandler） </li>
 </ol>
 <h4><a class="header" href="#接口" id="接口">接口</a></h4>
 <p>代码定义在<a href="https://github.com/yu-org/yu/blob/master/core/tripod/tripod.go">这里</a></p>

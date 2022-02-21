@@ -234,7 +234,6 @@ func main() {
 </code></pre>
 <p>至此，一条区块链便启动起来了。 后续可以加入更多区块链节点来<a href="5.5%E5%BB%BA%E7%AB%8B%E5%8C%BA%E5%9D%97%E9%93%BE%E7%BD%91%E7%BB%9C.html">构建区块链网络</a>。</p>
 <h1><a class="header" href="#基本原理" id="基本原理">基本原理</a></h1>
-<h3><a class="header" href="#系统架构" id="系统架构">系统架构</a></h3>
 <h3><a class="header" href="#流程总览" id="流程总览">流程总览</a></h3>
 <p><img src="yu_flow_chart.png" alt="image" /></p>
 <p>从客户端发起一个交易到链上， 会先经过 <code>txpool</code> 的检查， 当检查通过后才会被放入交易池当中 并且 广播给其他区块链节点。<br />
@@ -297,34 +296,34 @@ func LastFinalized() (*CompactBlock, error)
 <code>Finalize(blockHash)</code> 最终共识敲定一个区块<br />
 <code>GetEndBlock()</code> 获取最后一个未敲定区块<br />
 <code>LastFinalized()</code> 获取最后一个敲定的区块</p>
-<h1><a class="header" href="#区块库" id="区块库">区块库</a></h1>
+<h1><a class="header" href="#yudb" id="yudb">Yudb</a></h1>
 <p><code>yudb</code>存储所有区块中的具体交易数据、 交易执行后的 <code>event</code> 和 <code>error</code>。</p>
 <h3><a class="header" href="#接口-1" id="接口-1">接口</a></h3>
 <p>代码在<a href="https://github.com/yu-org/yu/blob/master/core/yudb/yudb.go">这里</a><br />
-以下为核心功能的接口，开发者如有需求，可自行定制属于自己的区块库。</p>
+以下为核心功能的接口，开发者如有需求，可自行定制属于自己的<code>yudb</code></p>
 <pre><code class="language-go">func GetTxn(txnHash Hash) (*SignedTxn, error)
 func SetTxn(stxn *SignedTxn) error
 </code></pre>
 <p><code>GetTxn(txnHash)</code>根据交易的哈希值获取交易数据<br />
-<code>SetTxn(stxn)</code>把交易数据存入区块库（以交易哈希为索引）</p>
+<code>SetTxn(stxn)</code>把交易数据存入yudb（以交易哈希为索引）</p>
 <h2><a class="header" href="#-3" id="-3"></a></h2>
 <pre><code class="language-go">func GetTxns(blockHash Hash) ([]*SignedTxn, error)
 func SetTxns(blockHash Hash, txns []*SignedTxn) error
 </code></pre>
 <p><code>GetTxns(blockHash)</code>根据 区块哈希 获取该区块中的所有 交易数据<br />
-<code>SetTxns(blockHash, txns)</code>把一个区块中的所有交易数据存入区块库中（以交易哈希为索引）</p>
+<code>SetTxns(blockHash, txns)</code>把一个区块中的所有交易数据存入yudb中（以交易哈希为索引）</p>
 <h2><a class="header" href="#-4" id="-4"></a></h2>
 <pre><code class="language-go">func GetEvents(blockHash Hash) ([]*Event, error)
 func SetEvents(events []*Event) error
 </code></pre>
 <p><code>GetEvents(blockHash)</code>根据 区块哈希 获取该区块中所有的 <code>event</code><br />
-<code>SetEvents(events）</code>把所有<code>event</code>存入区块库中（以自增ID为索引）</p>
+<code>SetEvents(events）</code>把所有<code>event</code>存入yudb中（以自增ID为索引）</p>
 <h2><a class="header" href="#-5" id="-5"></a></h2>
 <pre><code class="language-go">func GetErrors(blockHash Hash) ([]*Error, error)
 func SetError(err *Error) error
 </code></pre>
 <p><code>GetErrors(blockHash)</code>根据 区块哈希 获取该区块中所有的 <code>error</code><br />
-<code>SetError(err)</code> 把所有<code>error</code>存入区块库中（以自增ID为索引）</p>
+<code>SetError(err)</code> 把所有<code>error</code>存入yudb中（以自增ID为索引）</p>
 <h1><a class="header" href="#交易池" id="交易池">交易池</a></h1>
 <p>接口代码定义在<a href="https://github.com/yu-org/yu/blob/master/core/txpool/txpool.go">这里</a><br />
 以下为核心功能的接口，开发者如有需求，可自行定制属于自己的交易池</p>
@@ -361,7 +360,7 @@ func Reset(*CompactBlock) error
 <li>自定义区块验证规则和交易检查逻辑</li>
 <li>控制区块的生命周期从而实现深度定制化开发。生命周期有四个阶段：<code>initChain</code>, <code>startBlock</code>, <code>endBlock</code>, <code>finalizeBlock</code>。 其中只有<code>initChain</code>
 是只有在创世区块的时候才被调用的，后面三个是每次区块都会被调用。 （个性化共识算法便可以用区块生命周期来实现）</li>
-<li>自定义 <code>交易</code>(Execution) 和 <code>查询</code>(Query) </li>
+<li>自定义 <code>交易</code>(Execution) 、 <code>查询</code>(Query) 和 <code>P2P请求处理</code>（p2pHandler） </li>
 </ol>
 <h4><a class="header" href="#接口-2" id="接口-2">接口</a></h4>
 <p>代码定义在<a href="https://github.com/yu-org/yu/blob/master/core/tripod/tripod.go">这里</a></p>
@@ -401,19 +400,19 @@ func FinalizeBlock(block *CompactBlock) error
 <code>state</code>中事务具备原子性， 比如一个交易中一共有3个修改状态的操作，那么这3个操作要不然都能修改成功，要么都不成功。
 举例如下:</p>
 <pre><code class="language-go">func (a *A) DoTest(ctx *context.Context, env *ChainEnv) error {
-    env.KVDB.Set(a, []byte(&quot;yu&quot;), []byte(&quot;yu&quot;)) // 1. 修改状态
+    a.State.Set(a, []byte(&quot;yu&quot;), []byte(&quot;yu&quot;)) // 1. 修改状态
 
     err := DoOther()
     if err != nil {
         return err
     }
 
-    env.KVDB.Set(a, []byte(&quot;qi&quot;), []byte(&quot;qi&quot;)) // 2. 修改状态
+    a.State.Set(a, []byte(&quot;qi&quot;), []byte(&quot;qi&quot;)) // 2. 修改状态
 }
 </code></pre>
 <p>上述代码中，一共有两处 <code>修改状态</code> 的操作， 如果代码在第一处执行成功， 但是在<code>DoOther()</code>这里执行出错返回，那么第二处的<code>修改状态</code>就无法完成了，此时
 框架会一并把第一处的状态修改 取消掉 来保证原子性。</p>
-<p>状态存储的组件名为<code>StateStore</code>，目前内部暂时只支持kvdb的存储形式。 状态存储 以区块为单位，按顺序依次执行每个区块内的事务都存入到数据库中。 </p>
+<p>目前内部暂时只支持kvdb的存储形式。 状态存储 以区块为单位，按顺序依次执行每个区块内的事务都存入到数据库中。 </p>
 <p>代码在<a href="https://github.com/yu-org/yu/blob/master/core/state/kv.go">这里</a></p>
 <pre><code class="language-go">func StartBlock(blockHash)
 </code></pre>

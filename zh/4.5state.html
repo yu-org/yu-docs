@@ -160,19 +160,19 @@
 <code>state</code>中事务具备原子性， 比如一个交易中一共有3个修改状态的操作，那么这3个操作要不然都能修改成功，要么都不成功。
 举例如下:</p>
 <pre><code class="language-go">func (a *A) DoTest(ctx *context.Context, env *ChainEnv) error {
-    env.KVDB.Set(a, []byte(&quot;yu&quot;), []byte(&quot;yu&quot;)) // 1. 修改状态
+    a.State.Set(a, []byte(&quot;yu&quot;), []byte(&quot;yu&quot;)) // 1. 修改状态
 
     err := DoOther()
     if err != nil {
         return err
     }
 
-    env.KVDB.Set(a, []byte(&quot;qi&quot;), []byte(&quot;qi&quot;)) // 2. 修改状态
+    a.State.Set(a, []byte(&quot;qi&quot;), []byte(&quot;qi&quot;)) // 2. 修改状态
 }
 </code></pre>
 <p>上述代码中，一共有两处 <code>修改状态</code> 的操作， 如果代码在第一处执行成功， 但是在<code>DoOther()</code>这里执行出错返回，那么第二处的<code>修改状态</code>就无法完成了，此时
 框架会一并把第一处的状态修改 取消掉 来保证原子性。</p>
-<p>状态存储的组件名为<code>StateStore</code>，目前内部暂时只支持kvdb的存储形式。 状态存储 以区块为单位，按顺序依次执行每个区块内的事务都存入到数据库中。 </p>
+<p>目前内部暂时只支持kvdb的存储形式。 状态存储 以区块为单位，按顺序依次执行每个区块内的事务都存入到数据库中。 </p>
 <p>代码在<a href="https://github.com/yu-org/yu/blob/master/core/state/kv.go">这里</a></p>
 <pre><code class="language-go">func StartBlock(blockHash)
 </code></pre>

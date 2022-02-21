@@ -155,34 +155,34 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#区块库" id="区块库">区块库</a></h1>
+                        <h1><a class="header" href="#yudb" id="yudb">Yudb</a></h1>
 <p><code>yudb</code>存储所有区块中的具体交易数据、 交易执行后的 <code>event</code> 和 <code>error</code>。</p>
 <h3><a class="header" href="#接口" id="接口">接口</a></h3>
 <p>代码在<a href="https://github.com/yu-org/yu/blob/master/core/yudb/yudb.go">这里</a><br />
-以下为核心功能的接口，开发者如有需求，可自行定制属于自己的区块库。</p>
+以下为核心功能的接口，开发者如有需求，可自行定制属于自己的<code>yudb</code></p>
 <pre><code class="language-go">func GetTxn(txnHash Hash) (*SignedTxn, error)
 func SetTxn(stxn *SignedTxn) error
 </code></pre>
 <p><code>GetTxn(txnHash)</code>根据交易的哈希值获取交易数据<br />
-<code>SetTxn(stxn)</code>把交易数据存入区块库（以交易哈希为索引）</p>
+<code>SetTxn(stxn)</code>把交易数据存入yudb（以交易哈希为索引）</p>
 <h2><a class="header" href="#" id=""></a></h2>
 <pre><code class="language-go">func GetTxns(blockHash Hash) ([]*SignedTxn, error)
 func SetTxns(blockHash Hash, txns []*SignedTxn) error
 </code></pre>
 <p><code>GetTxns(blockHash)</code>根据 区块哈希 获取该区块中的所有 交易数据<br />
-<code>SetTxns(blockHash, txns)</code>把一个区块中的所有交易数据存入区块库中（以交易哈希为索引）</p>
+<code>SetTxns(blockHash, txns)</code>把一个区块中的所有交易数据存入yudb中（以交易哈希为索引）</p>
 <h2><a class="header" href="#-1" id="-1"></a></h2>
 <pre><code class="language-go">func GetEvents(blockHash Hash) ([]*Event, error)
 func SetEvents(events []*Event) error
 </code></pre>
 <p><code>GetEvents(blockHash)</code>根据 区块哈希 获取该区块中所有的 <code>event</code><br />
-<code>SetEvents(events）</code>把所有<code>event</code>存入区块库中（以自增ID为索引）</p>
+<code>SetEvents(events）</code>把所有<code>event</code>存入yudb中（以自增ID为索引）</p>
 <h2><a class="header" href="#-2" id="-2"></a></h2>
 <pre><code class="language-go">func GetErrors(blockHash Hash) ([]*Error, error)
 func SetError(err *Error) error
 </code></pre>
 <p><code>GetErrors(blockHash)</code>根据 区块哈希 获取该区块中所有的 <code>error</code><br />
-<code>SetError(err)</code> 把所有<code>error</code>存入区块库中（以自增ID为索引）</p>
+<code>SetError(err)</code> 把所有<code>error</code>存入yudb中（以自增ID为索引）</p>
 
                     </main>
 
