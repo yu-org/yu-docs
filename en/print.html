@@ -157,7 +157,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#introduce" id="introduce">introduce</a></h1>
+                        <h1><a class="header" href="#introduce" id="introduce">Introduce</a></h1>
 <p>Yu is an easy-to-use and highly customizable blockchain framework developed in golang. 
 Most of the existing blockchains (Public Blockchain and Consortium Blockchain) can be developed with yu.</p>
 <h3><a class="header" href="#why-do-this" id="why-do-this">Why do this?</a></h3>
@@ -172,8 +172,8 @@ This blockchain framework. The purpose is to allow developers to get started wit
 <li>Custom chain structure (including fork logic) and transaction pool logic</li>
 <li>Can be developed in multiple programming languages (not yet finished)  </li>
 </ul>
-<h1><a class="header" href="#快速开始" id="快速开始">快速开始</a></h1>
-<h4><a class="header" href="#安装" id="安装">安装</a></h4>
+<h1><a class="header" href="#quick-start" id="quick-start">Quick Start</a></h1>
+<h4><a class="header" href="#install" id="install">Install</a></h4>
 <pre><code>go get github.com/yu-org/yu
 </code></pre>
 <h4><a class="header" href="#develop-an-on-chain-execution-and-query" id="develop-an-on-chain-execution-and-query">Develop an on-chain <code>Execution</code> and <code>Query</code></a></h4>
@@ -213,10 +213,10 @@ func (e *Example) Qry(ctx *context.Context, env *chain_env.ChainEnv, _ common.Ha
 	df := tripod.NewDefaultTripod(&quot;example&quot;)
 	e := &amp;Example{df}
 
-	// 此处需要手动将自定义的 Execution 注册到 tripod 中，
-	// 这里的 10 表示设置该操作所需要消耗的 lei 的数量 （lei 和 gas 同义）
+	// Here you need to manually register the custom Execution to tripod，
+	// The 10 here represents the amount of lei required to set the operation (lei and gas are synonymous)
 	e.SetExec(e.Exec, 10) 
-	// 此处需要手动将自定义的 Query 注册到 tripod 中
+	// Here you need to manually register the custom Query into tripod
 	e.SetQueries(e.Qry)
 
 	return e
@@ -226,14 +226,14 @@ func main() {
 	startup.StartUp(pow.NewPow(1024), NewExample())
 }
 </code></pre>
-<h4><a class="header" href="#运行" id="运行">运行</a></h4>
+<h4><a class="header" href="#run" id="run">Run</a></h4>
 <pre><code class="language-zsh">go build -o yu-example
 
-// -dc=true 表示使用默认配置，无需另行配置文件。
+// -dc=true indicates that the default configuration is used, and no additional configuration files are required.
 ./yu-example -dc=true
  
 </code></pre>
-<p>至此，一条区块链便启动起来了。 后续可以加入更多区块链节点来<a href="5.5%E5%BB%BA%E7%AB%8B%E5%8C%BA%E5%9D%97%E9%93%BE%E7%BD%91%E7%BB%9C.html">构建区块链网络</a>。</p>
+<p>At this point, a blockchain has been activated. In the future, more blockchain nodes can be added to <a href="5.5%E5%BB%BA%E7%AB%8B%E5%8C%BA%E5%9D%97%E9%93%BE%E7%BD%91%E7%BB%9C.html">build a blockchain network</a>。</p>
 <h1><a class="header" href="#fundamental" id="fundamental">Fundamental</a></h1>
 <h3><a class="header" href="#process-overview" id="process-overview">Process overview</a></h3>
 <p><img src="yu_flow_chart.png" alt="image" /></p>
