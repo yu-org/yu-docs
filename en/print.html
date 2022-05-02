@@ -201,7 +201,7 @@ func (e *Example) Exec(ctx *context.Context, _ *CompactBlock) error {
 }
 
 // Here is a custom development of a Query
-func (e *Example) Qry(ctx *context.Context, env *chain_env.ChainEnv, _ common.Hash) (interface{}, error) {
+func (e *Example) Qry(ctx *context.Context, _ common.Hash) (interface{}, error) {
 	caller := ctx.Caller
 	value, err := e.State.Get(e, caller.Bytes())
 	return string(value), err
