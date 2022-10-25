@@ -180,14 +180,13 @@ And <code>TripodsCheck</code> is defined here, each <code>tripod</code> can defi
 <p><code>VerifyBlock()</code> is a developer-defined block verification logic. Every time the blockchain receives a block from external broadcast, it needs to be verified before it can be processed. Different chains have different verifications for blocks. test method, so
 Developers can customize the validation logic by themselves. Each <code>tripod</code> can define its own transaction checking logic.</p>
 <h2><a class="header" href="#-1" id="-1"></a></h2>
-<pre><code class="language-go">func InitChain() error
-func StartBlock(block *Block) (needBroadcast bool, err error)
-func EndBlock(block *Block) error
-func FinalizeBlock(block *Block) error
+<pre><code class="language-go">func InitChain() 
+func StartBlock(block *Block) 
+func EndBlock(block *Block)
+func FinalizeBlock(block *Block)
 </code></pre>
 <p><code>InitChain()</code> will only be called once when the blockchain is started, and it is specially used to define and process the <code>genesis block</code>.<br />
-<code>StartBlock()</code> defines the logic of the stage when the block is generated, and needs to return a <code>needBroadcast</code> return value of type <code>bool</code> to tell the framework whether the block needs to be broadcast. Generally, if it is a locally mined block, it needs to be broadcast, if it is from other nodes
-The acquired block does not need to be broadcast.<br />
+<code>StartBlock()</code> defines the logic of the stage when the block is generated.<br />
 <code>EndBlock()</code> defines the logic at the end of the block, where the transaction is generally executed and the block is stored in the blockchain.<br />
 <code>FinalizeBlock()</code> defines the logic of the block's <code>finalize phase</code> (i.e. final consensus). If the blockchain is a <code>finalize type chain</code>, you need to customize this part of the logic, otherwise it is not necessary.</p>
 <h3><a class="header" href="#dependency-injection" id="dependency-injection">Dependency Injection</a></h3>
