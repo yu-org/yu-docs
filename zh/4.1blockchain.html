@@ -168,23 +168,23 @@
 最重子链(Heaviest): 子链数量最多的分叉会被认为是主链， 该方式会被回滚。<br />
 敲定(Finalize): 通过投票等方式对区块或者链进行投票 来最终敲定某个分叉成为主链，正常情况下被敲定的区块无法被回滚。</p>
 <h2><a class="header" href="#" id=""></a></h2>
-<pre><code class="language-go">func GetGenesis() (*Block, error)
-func SetGenesis(b *Block) error
+<pre><code class="language-go">func GetGenesis() (*CompactBlock, error)
+func SetGenesis(b *CompactBlock) error
 </code></pre>
 <p>从链内获取创世区块，把创世区块存入链。</p>
 <h2><a class="header" href="#-1" id="-1"></a></h2>
-<pre><code class="language-go">func AppendBlock(b *Block) error
-func GetBlock(blockHash Hash) (*Block, error)
-func UpdateBlock(b *Block) error
+<pre><code class="language-go">func AppendBlock(b *CompactBlock) error
+func GetBlock(blockHash Hash) (*CompactBlock, error)
+func UpdateBlock(b *CompactBlock) error
 </code></pre>
 <p><code>AppendBlock(block)</code>将区块加入到链的末尾<br />
 <code>GetBlock(blockHash)</code>根据区块哈希获取具体的区块<br />
 <code>UpdateBlock(block)</code>以区块哈希为索引更新区块数据</p>
 <h2><a class="header" href="#-2" id="-2"></a></h2>
-<pre><code class="language-go">func Children(prevBlockHash Hash) ([]*Block, error)  
+<pre><code class="language-go">func Children(prevBlockHash Hash) ([]*CompactBlock, error)  
 func Finalize(blockHash Hash) error  
-func GetEndBlock() (*Block, error)
-func LastFinalized() (*Block, error)
+func GetEndBlock() (*CompactBlock, error)
+func LastFinalized() (*CompactBlock, error)
 </code></pre>
 <p><code>Children(blockHash)</code> 根据一个区块哈希获取它的所有子区块<br />
 <code>Finalize(blockHash)</code> 最终共识敲定一个区块<br />

@@ -287,23 +287,23 @@ As we all know, in the blockchain, multiple nodes may produce blocks at the same
 </li>
 </ul>
 <h2><a class="header" href="#" id=""></a></h2>
-<pre><code class="language-go">func GetGenesis() (*Block, error)
-func SetGenesis(b *Block) error
+<pre><code class="language-go">func GetGenesis() (*CompactBlock, error)
+func SetGenesis(b *CompactBlock) error
 </code></pre>
 <p>Obtain the genesis block from the chain and store the genesis block into the chain.</p>
 <h2><a class="header" href="#-1" id="-1"></a></h2>
-<pre><code class="language-go">func AppendBlock(b *Block) error
-func GetBlock(blockHash Hash) (*Block, error)
-func UpdateBlock(b *Block) error
+<pre><code class="language-go">func AppendBlock(b *CompactBlock) error
+func GetBlock(blockHash Hash) (*CompactBlock, error)
+func UpdateBlock(b *CompactBlock) error
 </code></pre>
 <p><code>AppendBlock(block)</code>adds the block to the end of the chain<br />
 <code>GetBlock(blockHash)</code>gets a specific block based on the block hash<br />
 <code>UpdateBlock(block)</code>updates block data with block hash as index</p>
 <h2><a class="header" href="#-2" id="-2"></a></h2>
-<pre><code class="language-go">func Children(prevBlockHash Hash) ([]*Block, error)  
+<pre><code class="language-go">func Children(prevBlockHash Hash) ([]*CompactBlock, error)  
 func Finalize(blockHash Hash) error  
-func GetEndBlock() (*Block, error)
-func LastFinalized() (*Block, error)
+func GetEndBlock() (*CompactBlock, error)
+func LastFinalized() (*CompactBlock, error)
 </code></pre>
 <p><code>Children(blockHash)</code> gets all its subblocks based on a block hash<br />
 <code>Finalize(blockHash)</code> finals consensus finalizes a block<br />
