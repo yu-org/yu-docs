@@ -182,7 +182,7 @@ func (e *Example) Exec(ctx *context.WriteContext) error {
         // 将数据存入链上状态中。
 	e.State.Set(e, caller.Bytes(), []byte(&quot;yu&quot;))
         // 向链外发射一个event
-	return ctx.EmitEvent(&quot;execute success&quot;)
+	return ctx.EmitStringEvent(&quot;execute success&quot;)
 }
 
 // 此处定制开发一个 Reading
