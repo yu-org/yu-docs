@@ -204,10 +204,14 @@ func (e *Example) Exec(ctx *context.WriteContext) error {
 }
 
 // Here is a custom development of a Query
-func (e *Example) Qry(ctx *context.ReadContext) (interface{}, error) {
-	caller := ctx.Caller
-	value, err := e.State.Get(e, caller.Bytes())
-	return string(value), err
+func (e *Example) Qry(ctx *context.ReadContext) error {
+    caller := ctx.Caller
+    value, err := e.State.Get(e, caller.Bytes())
+    if err != nil {
+        return err
+    }
+    ctx.String(string(value))
+    return nil
 }
 
 </code></pre>
@@ -226,7 +230,7 @@ func (e *Example) Qry(ctx *context.ReadContext) (interface{}, error) {
 }
 
 func main() {
-	startup.StartUp(pow.NewPow(1024), NewExample())
+	startup.SyncAndStartup(pow.NewPow(1024), NewExample())
 }
 </code></pre>
 <h4><a class="header" href="#run" id="run">Run</a></h4>
@@ -410,9 +414,9 @@ In order to facilitate developers to manage Tripod dependencies more convenientl
 <p>As shown above, it is known that we already have an <a href="https://github.com/yu-org/yu/blob/master/apps/asset/transfer.go">Asset Tripod</a>. Now we develop the pledge module, which needs to rely on the assets in the asset
 Some functions, then we only need to declare the asset variable in the Staking structure and add a tag (<code>tripod:&quot;asset&quot;</code>).
 This is a fixed syntax <code>tripod:&lt;TripodName&gt;</code>, after adding, we just need to start yu normally:</p>
-<pre><code class="language-go">    startup.StartUp(Staking.New(), asset.NewAsset())
+<pre><code class="language-go">    startup.SyncAndStartup(Staking.New(), asset.NewAsset())
 </code></pre>
-<p>Simple as above. startup() is a necessary step to start yu, you only need to call it once in your code, Startup() will automatically load these Tripods and complete dependency injection at runtime.</p>
+<p>Simple as above. <code>SyncAndStartup()</code> is a necessary step to start yu, you only need to call it once in your code, Startup() will automatically load these Tripods and complete dependency injection at runtime.</p>
 <h2><a class="header" href="#land" id="land">land</a></h2>
 <p><code>land</code> is used to load all <code>tripod</code>s for the framework to call.</p>
 <h4><a class="header" href="#land-internal-flow-chart" id="land-internal-flow-chart"><code>land</code> internal flow chart</a></h4>

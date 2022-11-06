@@ -203,10 +203,14 @@ func (e *Example) Exec(ctx *context.WriteContext) error {
 }
 
 // 此处定制开发一个 Reading
-func (e *Example) Qry(ctx *context.ReadContext) (interface{}, error) {
+func (e *Example) Qry(ctx *context.ReadContext) error {
 	caller := ctx.Caller
 	value, err := e.State.Get(e, caller.Bytes())
-	return string(value), err
+	if err != nil {
+		return err
+        }
+	ctx.String(string(value))
+	return nil
 }
 
 </code></pre>
@@ -226,7 +230,7 @@ func (e *Example) Qry(ctx *context.ReadContext) (interface{}, error) {
 func main() {
 	// 启用默认的配置
 	startup.InitDefaultConfig()
-	startup.StartUp(pow.NewPow(1024), NewExample())
+	startup.SyncAndStartup(pow.NewPow(1024), NewExample())
 }
 </code></pre>
 <h4><a class="header" href="#运行" id="运行">运行</a></h4>
@@ -390,9 +394,9 @@ func FinalizeBlock(block *Block)
 <p>如上所示，已知我们已经有一个<a href="https://github.com/yu-org/yu/blob/master/apps/asset/transfer.go">Asset Tripod</a>。 现在我们开发质押模块，需要依赖Asset中的
 某些函数，那么我们只需要在Staking结构体中声明 asset 变量 并添加tag（<code>tripod:&quot;asset&quot;</code>）。<br />
 这是个固定语法<code>tripod:&lt;TripodName&gt;</code>，添加完之后，我们只需要正常地启动yu就可以了：</p>
-<pre><code class="language-go">    startup.StartUp(Staking.New(), asset.NewAsset())
+<pre><code class="language-go">    startup.SyncAndStartup(Staking.New(), asset.NewAsset())
 </code></pre>
-<p>如上简单。 startup()是启动yu的必要步骤，在你的代码里只需调用一次即可， Startup()会自动加载这些Tripod并在运行时完成依赖注入。</p>
+<p>如上简单。 <code>SyncAndStartup()</code>是启动yu的必要步骤，在你的代码里只需调用一次即可， Startup()会自动加载这些Tripod并在运行时完成依赖注入。</p>
 <h2><a class="header" href="#land" id="land">land</a></h2>
 <p><code>land</code>用来装载所有的<code>tripod</code> 供框架调用。</p>
 <h4><a class="header" href="#land内部流程图" id="land内部流程图"><code>land</code>内部流程图</a></h4>
