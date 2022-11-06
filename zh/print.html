@@ -199,7 +199,8 @@ func (e *Example) Exec(ctx *context.WriteContext) error {
         // 将数据存入链上状态中。
 	e.State.Set(e, caller.Bytes(), []byte(&quot;yu&quot;))
         // 向链外发射一个event
-	return ctx.EmitStringEvent(&quot;execute success&quot;)
+	ctx.EmitStringEvent(&quot;execute success&quot;)
+	return nil
 }
 
 // 此处定制开发一个 Reading
@@ -638,7 +639,7 @@ node_key_rand_seed = 1
    float32, float64
 </code></pre>
 <ul>
-<li>同时如果需要向链外返回 <code>event</code>的时候， 也需要通过<code>context</code>来完成(<code>ctx.EmitEvent(interface{})</code>)。</li>
+<li>同时如果需要向链外返回 <code>event</code>的时候， 也需要通过<code>context</code>来完成(<code>ctx.EmitEvent([]byte)</code>)。</li>
 </ul>
 <p><a href="https://github.com/yu-org/yu/blob/master/core/chain_env/env.go">ChainEnv</a> 包含了所有链相关的一切环境组件，其中有 <code>blockchain</code>、
 <code>txdb</code>、 <code>txpool</code>、 <code>state</code>、<code>Execute</code> 、 <code>P2pNetwork</code>。 可供开发者直接操作到框架底层的组件。 </p>

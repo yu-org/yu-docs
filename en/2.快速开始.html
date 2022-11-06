@@ -182,7 +182,8 @@ func (e *Example) Exec(ctx *context.WriteContext) error {
         // Store data in on-chain state.
 	e.State.Set(e, caller.Bytes(), []byte(&quot;yu&quot;))
         // Emit an event.
-	return ctx.EmitStringEvent(&quot;execute success&quot;)
+	ctx.EmitStringEvent(&quot;execute success&quot;)
+	return nil
 }
 
 // Here is a custom development of a Query
