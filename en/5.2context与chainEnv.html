@@ -178,7 +178,7 @@ If the parameter type is custom, you need to obtain <code>interface</code> throu
 <ul>
 <li>At the same time, if you need to return <code>event</code> out of the chain, you also need to complete it through <code>context</code> (<code>ctx.EmitEvent([]byte)</code>).</li>
 </ul>
-<p><a href="https://github.com/yu-org/yu/blob/master/core/chain_env/env.go">ChainEnv</a> contains all environment components related to all chains, including <code>blockchain</code>,
+<p><a href="https://github.com/yu-org/yu/blob/master/core/env/env.go">ChainEnv</a> contains all environment components related to all chains, including <code>blockchain</code>,
 <code>txdb</code>, <code>txpool</code>, <code>state</code>, <code>Execute</code>, <code>P2pNetwork</code>. Components that can be directly manipulated by developers to the bottom layer of the framework.  </p>
 
                     </main>

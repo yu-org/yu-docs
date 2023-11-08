@@ -181,7 +181,7 @@ This blockchain framework. The purpose is to allow developers to get started wit
 <pre><code class="language-go">import (
 	&quot;github.com/yu-org/yu/apps/pow&quot;
 	. &quot;github.com/yu-org/yu/core/types&quot;
-	&quot;github.com/yu-org/yu/chain_env&quot;
+	&quot;github.com/yu-org/yu/env&quot;
 	&quot;github.com/yu-org/yu/common&quot;
 	&quot;github.com/yu-org/yu/context&quot;
 	&quot;github.com/yu-org/yu/startup&quot;
@@ -198,7 +198,7 @@ func (e *Example) Exec(ctx *context.WriteContext) error {
 	// set this Writing lei cost
 	ctx.SetLei(100)
         // Store data in on-chain state.
-	e.State.Set(e, caller.Bytes(), []byte(&quot;yu&quot;))
+	e.Set(caller.Bytes(), []byte(&quot;yu&quot;))
         // Emit an event.
 	ctx.EmitStringEvent(&quot;execute success&quot;)
 	return nil
@@ -207,7 +207,7 @@ func (e *Example) Exec(ctx *context.WriteContext) error {
 // Here is a custom development of a Query
 func (e *Example) Qry(ctx *context.ReadContext) error {
     caller := ctx.Caller
-    value, err := e.State.Get(e, caller.Bytes())
+    value, err := e.Get(caller.Bytes())
     if err != nil {
         return err
     }
@@ -218,7 +218,7 @@ func (e *Example) Qry(ctx *context.ReadContext) error {
 </code></pre>
 <h4><a class="header" href="#add-tripods-in-the-main-function" id="add-tripods-in-the-main-function">Add tripods in the main function</a></h4>
 <pre><code class="language-go">func NewExample() *Example {
-	df := tripod.NewTripod(&quot;example&quot;)
+	df := tripod.NewTripod()
 	e := &amp;Example{df}
 
 	// Here you need to manually register the custom Writing to tripod，
@@ -663,7 +663,7 @@ If the parameter type is custom, you need to obtain <code>interface</code> throu
 <ul>
 <li>At the same time, if you need to return <code>event</code> out of the chain, you also need to complete it through <code>context</code> (<code>ctx.EmitEvent([]byte)</code>).</li>
 </ul>
-<p><a href="https://github.com/yu-org/yu/blob/master/core/chain_env/env.go">ChainEnv</a> contains all environment components related to all chains, including <code>blockchain</code>,
+<p><a href="https://github.com/yu-org/yu/blob/master/core/env/env.go">ChainEnv</a> contains all environment components related to all chains, including <code>blockchain</code>,
 <code>txdb</code>, <code>txpool</code>, <code>state</code>, <code>Execute</code>, <code>P2pNetwork</code>. Components that can be directly manipulated by developers to the bottom layer of the framework.  </p>
 <h1><a class="header" href="#writing-and-reading" id="writing-and-reading">Writing and Reading</a></h1>
 <p>Under normal circumstances, developers will use more <code>Writing</code> and <code>Reading</code>, because these are basically external read and write interfaces at the business level. So in this section we look at how in <code>yu</code>

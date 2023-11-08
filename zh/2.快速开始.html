@@ -163,7 +163,7 @@
 <pre><code class="language-go">import (
 	&quot;github.com/yu-org/yu/apps/pow&quot;
 	. &quot;github.com/yu-org/yu/core/types&quot;
-	&quot;github.com/yu-org/yu/chain_env&quot;
+	&quot;github.com/yu-org/yu/env&quot;
 	&quot;github.com/yu-org/yu/common&quot;
 	&quot;github.com/yu-org/yu/context&quot;
 	&quot;github.com/yu-org/yu/startup&quot;
@@ -180,7 +180,7 @@ func (e *Example) Exec(ctx *context.WriteContext) error {
         // 设置该 writing 所需消耗的lei
 	ctx.SetLei(100)
         // 将数据存入链上状态中。
-	e.State.Set(e, caller.Bytes(), []byte(&quot;yu&quot;))
+	e.Set(caller.Bytes(), []byte(&quot;yu&quot;))
         // 向链外发射一个event
 	ctx.EmitStringEvent(&quot;execute success&quot;)
 	return nil
@@ -189,7 +189,7 @@ func (e *Example) Exec(ctx *context.WriteContext) error {
 // 此处定制开发一个 Reading
 func (e *Example) Qry(ctx *context.ReadContext) error {
 	caller := ctx.Caller
-	value, err := e.State.Get(e, caller.Bytes())
+	value, err := e.Get(caller.Bytes())
 	if err != nil {
 		return err
         }
@@ -200,7 +200,7 @@ func (e *Example) Qry(ctx *context.ReadContext) error {
 </code></pre>
 <h4><a class="header" href="#在main函数中添加-tripods" id="在main函数中添加-tripods">在main函数中添加 tripods</a></h4>
 <pre><code class="language-go">func NewExample() *Example {
-	df := tripod.NewTripod(&quot;example&quot;)
+	df := tripod.NewTripod()
 	e := &amp;Example{df}
 
 	// 此处需要手动将自定义的 Writing 注册到 tripod 中，
