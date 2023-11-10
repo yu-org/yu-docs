@@ -177,7 +177,7 @@ type Example struct {
 // 此处定制开发一个 Writing
 func (e *Example) Exec(ctx *context.WriteContext) error {
 	caller := ctx.Caller
-        // 设置该 writing 所需消耗的lei
+        // 设置该 writing 所需消耗的lei (lei和gas同义)
 	ctx.SetLei(100)
         // 将数据存入链上状态中。
 	e.Set(caller.Bytes(), []byte(&quot;yu&quot;))

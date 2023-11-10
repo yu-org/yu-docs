@@ -177,7 +177,7 @@ type Example struct {
 // Here is a custom development of an Writing
 func (e *Example) Exec(ctx *context.WriteContext) error {
 	caller := ctx.Caller
-	// set this Writing lei cost
+	// set this Writing lei cost (lei and gas are synonymous)
 	ctx.SetLei(100)
         // Store data in on-chain state.
 	e.Set(caller.Bytes(), []byte(&quot;yu&quot;))
@@ -204,7 +204,6 @@ func (e *Example) Qry(ctx *context.ReadContext) error {
 	e := &amp;Example{df}
 
 	// Here you need to manually register the custom Writing to tripod，
-	// The 10 here represents the amount of lei required to set the operation (lei and gas are synonymous)
 	e.SetWritings(e.Exec)
 	// Here you need to manually register the custom Reading into tripod
 	e.SetReadings(e.Qry)
