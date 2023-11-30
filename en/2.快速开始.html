@@ -175,7 +175,7 @@ type Example struct {
 }
 
 // Here is a custom development of an Writing
-func (e *Example) Exec(ctx *context.WriteContext) error {
+func (e *Example) WriteA(ctx *context.WriteContext) error {
 	caller := ctx.Caller
 	// set this Writing lei cost (lei and gas are synonymous)
 	ctx.SetLei(100)
@@ -187,7 +187,7 @@ func (e *Example) Exec(ctx *context.WriteContext) error {
 }
 
 // Here is a custom development of a Query
-func (e *Example) Qry(ctx *context.ReadContext) error {
+func (e *Example) ReadA(ctx *context.ReadContext) error {
     caller := ctx.Caller
     value, err := e.Get(caller.Bytes())
     if err != nil {
@@ -204,9 +204,9 @@ func (e *Example) Qry(ctx *context.ReadContext) error {
 	e := &amp;Example{df}
 
 	// Here you need to manually register the custom Writing to tripod，
-	e.SetWritings(e.Exec)
+	e.SetWritings(e.WriteA)
 	// Here you need to manually register the custom Reading into tripod
-	e.SetReadings(e.Qry)
+	e.SetReadings(e.ReadA)
 
 	return e
 }
