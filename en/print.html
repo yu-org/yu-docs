@@ -192,7 +192,7 @@ type Example struct {
 	*tripod.Tripod
 }
 
-// Here is a custom development of an Writing
+// Here is a custom development of a Writing
 func (e *Example) WriteA(ctx *context.WriteContext) error {
 	caller := ctx.GetCaller()
 	// set this Writing lei cost (lei and gas are synonymous)
@@ -204,7 +204,7 @@ func (e *Example) WriteA(ctx *context.WriteContext) error {
 	return nil
 }
 
-// Here is a custom development of a Query
+// Here is a custom development of a Reading
 func (e *Example) ReadA(ctx *context.ReadContext) {
     key := ctx.GetString(&quot;key&quot;)
     value, err := e.Get(key.Bytes())
