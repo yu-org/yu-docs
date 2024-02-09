@@ -194,7 +194,7 @@ type Example struct {
 
 // Here is a custom development of an Writing
 func (e *Example) WriteA(ctx *context.WriteContext) error {
-	caller := ctx.Caller
+	caller := ctx.GetCaller()
 	// set this Writing lei cost (lei and gas are synonymous)
 	ctx.SetLei(100)
         // Store data in on-chain state.
@@ -205,9 +205,9 @@ func (e *Example) WriteA(ctx *context.WriteContext) error {
 }
 
 // Here is a custom development of a Query
-func (e *Example) ReadA(ctx *context.ReadContext) error {
-    caller := ctx.Caller
-    value, err := e.Get(caller.Bytes())
+func (e *Example) ReadA(ctx *context.ReadContext) {
+    key := ctx.GetString(&quot;key&quot;)
+    value, err := e.Get(key.Bytes())
     if err != nil {
         return err
     }
@@ -230,13 +230,15 @@ func (e *Example) ReadA(ctx *context.ReadContext) error {
 }
 
 func main() {
-	startup.SyncAndStartup(pow.NewPow(1024), NewExample())
+	poaConf := poa.DefaultCfg(0)
+	startup.InitDefaultKernelConfig()
+	startup.DefaultStartup(poa.NewPoa(poaConf), NewExample())
 }
 </code></pre>
 <h4><a class="header" href="#run" id="run">Run</a></h4>
-<pre><code class="language-zsh">go build -o yu-example
+<pre><code class="language-zsh">go build -o yu-poa-example
 
-./yu-example  
+./yu-poa-example  
  
 </code></pre>
 <p>At this point, a blockchain has been activated. In the future, more blockchain nodes can be added to <a href="5.5%E5%BB%BA%E7%AB%8B%E5%8C%BA%E5%9D%97%E9%93%BE%E7%BD%91%E7%BB%9C.html">build a blockchain network</a>。</p>

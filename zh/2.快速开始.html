@@ -176,7 +176,7 @@ type Example struct {
 
 // 此处定制开发一个 Writing
 func (e *Example) WriteA(ctx *context.WriteContext) error {
-	caller := ctx.Caller
+	caller := ctx.GetCaller()
         // 设置该 writing 所需消耗的lei (lei和gas同义)
 	ctx.SetLei(100)
         // 将数据存入链上状态中。
@@ -188,8 +188,8 @@ func (e *Example) WriteA(ctx *context.WriteContext) error {
 
 // 此处定制开发一个 Reading
 func (e *Example) ReadA(ctx *context.ReadContext) error {
-	caller := ctx.Caller
-	value, err := e.Get(caller.Bytes())
+	key := ctx.GetString(&quot;key&quot;)
+	value, err := e.Get(key.Bytes())
 	if err != nil {
 		return err
         }
@@ -213,14 +213,15 @@ func (e *Example) ReadA(ctx *context.ReadContext) error {
 
 func main() {
 	// 启用默认的配置
-	startup.InitDefaultConfig()
-	startup.SyncAndStartup(pow.NewPow(1024), NewExample())
+	poaConf := poa.DefaultCfg(0)
+	startup.InitDefaultKernelConfig()
+	startup.DefaultStartup(poa.NewPoa(poaConf), NewExample())
 }
 </code></pre>
 <h4><a class="header" href="#运行" id="运行">运行</a></h4>
-<pre><code class="language-zsh">go build -o yu-example
+<pre><code class="language-zsh">go build -o yu-poa-example
 
-./yu-example 
+./yu-poa-example 
  
 </code></pre>
 <p>至此，一条区块链便启动起来了。 后续可以加入更多区块链节点来<a href="5.5%E5%BB%BA%E7%AB%8B%E5%8C%BA%E5%9D%97%E9%93%BE%E7%BD%91%E7%BB%9C.html">构建区块链网络</a>。</p>
