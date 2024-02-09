@@ -178,10 +178,10 @@ type Example struct {
 func (e *Example) WriteA(ctx *context.WriteContext) error {
 	caller := ctx.GetCaller()
 	// set this Writing lei cost (lei and gas are synonymous)
-	ctx.SetLei(100)
-        // Store data in on-chain state.
-	e.Set(caller.Bytes(), []byte(&quot;yu&quot;))
-        // Emit an event.
+	ctx.SetLei(100) 
+	// Store data in on-chain state.
+	e.Set(caller.Bytes(), []byte(&quot;yu&quot;)) 
+	// Emit an event.
 	ctx.EmitStringEvent(&quot;execute success&quot;)
 	return nil
 }
