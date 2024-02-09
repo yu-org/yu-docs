@@ -209,7 +209,8 @@ func (e *Example) ReadA(ctx *context.ReadContext) {
     key := ctx.GetString(&quot;key&quot;)
     value, err := e.Get(key.Bytes())
     if err != nil {
-        return err
+		ctx.JsonOk(err)
+		return err
     }
     ctx.String(string(value))
     return nil
