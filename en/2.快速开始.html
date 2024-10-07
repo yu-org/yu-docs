@@ -159,69 +159,94 @@
 <h4><a class="header" href="#install" id="install">Install</a></h4>
 <pre><code>go get github.com/yu-org/yu
 </code></pre>
+<p>Source code link: https://github.com/yu-org/yu/blob/main/apps/quickstart/chain.go </p>
 <h4><a class="header" href="#develop-an-on-chain-writing-and-reading" id="develop-an-on-chain-writing-and-reading">Develop an on-chain <code>Writing</code> and <code>Reading</code></a></h4>
-<pre><code class="language-go">import (
-	&quot;github.com/yu-org/yu/apps/pow&quot;
-	. &quot;github.com/yu-org/yu/core/types&quot;
-	&quot;github.com/yu-org/yu/env&quot;
-	&quot;github.com/yu-org/yu/common&quot;
-	&quot;github.com/yu-org/yu/context&quot;
-	&quot;github.com/yu-org/yu/startup&quot;
-	&quot;github.com/yu-org/yu/tripod&quot;
+<pre><code class="language-go">package main
+
+import (
+	&quot;github.com/yu-org/yu/apps/poa&quot;
+	&quot;github.com/yu-org/yu/core/context&quot;
+	&quot;github.com/yu-org/yu/core/startup&quot;
+	&quot;github.com/yu-org/yu/core/tripod&quot;
+	&quot;net/http&quot;
 )
 
-type Example struct {
+type QuickStart struct {
 	*tripod.Tripod
+}
+
+func NewQuickStart() *QuickStart {
+	tri := &amp;QuickStart{
+		tripod.NewTripod(),
+	}
+	// 此处需要手动将自定义的 Writing 注册到 tripod 中，
+	tri.SetWritings(tri.WriteA)
+	// 此处需要手动将自定义的 Reading 注册到 tripod 中
+	tri.SetReadings(tri.ReadA)
+	return tri
+}
+
+type WriteRequest struct {
+	Key   string `json:&quot;key&quot;`
+	Value string `json:&quot;value&quot;`
 }
 
 // Here is a custom development of a Writing.   
 // The Writing will be consensus and executed across the entire network.
-func (e *Example) WriteA(ctx *context.WriteContext) error {
-	caller := ctx.GetCaller()
+func (q *QuickStart) WriteA(ctx *context.WriteContext) error {
 	// set this Writing lei cost (lei and gas are synonymous)
-	ctx.SetLei(100) 
+	ctx.SetLei(100)
+
+	req := new(WriteRequest)
+	err := ctx.BindJson(req)
+	if err != nil {
+		return err
+	}
 	// Store data in on-chain state.
-	e.Set(caller.Bytes(), []byte(&quot;yu&quot;)) 
+	q.Set([]byte(req.Key), []byte(req.Value))
 	// Emit an event.
 	ctx.EmitStringEvent(&quot;execute success&quot;)
 	return nil
 }
 
-// Here is a custom development of a Reading
-func (e *Example) ReadA(ctx *context.ReadContext) {
-    key := ctx.GetString(&quot;key&quot;)
-    value, err := e.Get(key.Bytes())
-    if err != nil {
-		ctx.JsonOk(err)
-		return
-    }
-    ctx.JsonOk(string(value))
+type ReadRequest struct {
+	Key string `json:&quot;key&quot;`
 }
+
+// Here is a custom development of a Reading
+func (q *QuickStart) ReadA(ctx *context.ReadContext) {
+	req := new(ReadRequest)
+	err := ctx.BindJson(req)
+	if err != nil {
+		ctx.Err(http.StatusBadRequest, err)
+		return
+	}
+	value, err := q.Get([]byte(req.Key))
+	if err != nil {
+		ctx.ErrOk(err)
+		return
+	}
+	ctx.JsonOk(value)
+}
+
 
 </code></pre>
-<h4><a class="header" href="#add-tripods-in-the-main-function" id="add-tripods-in-the-main-function">Add tripods in the main function</a></h4>
-<pre><code class="language-go">func NewExample() *Example {
-	df := tripod.NewTripod()
-	e := &amp;Example{df}
+<h4><a class="header" href="#在main函数中添加-tripods" id="在main函数中添加-tripods">在main函数中添加 tripods</a></h4>
+<pre><code class="language-go">func main() {
+    // default poa tripod config
+    poaCfg := poa.DefaultCfg(0)
+    // default yu config
+    yuCfg := startup.InitDefaultKernelConfig()
 
-	// Here you need to manually register the custom Writing to tripod，
-	e.SetWritings(e.WriteA)
-	// Here you need to manually register the custom Reading into tripod
-	e.SetReadings(e.ReadA)
-
-	return e
-}
-
-func main() {
-	poaConf := poa.DefaultCfg(0)
-	startup.InitDefaultKernelConfig()
-	startup.DefaultStartup(poa.NewPoa(poaConf), NewExample())
+    poaTri := poa.NewPoa(poaCfg)
+    qsTri := NewQuickStart()
+    startup.DefaultStartup(yuCfg, poaTri, qsTri)
 }
 </code></pre>
 <h4><a class="header" href="#run" id="run">Run</a></h4>
-<pre><code class="language-zsh">go build -o yu-poa-example
+<pre><code class="language-zsh">go build -o yu-example
 
-./yu-poa-example  
+./yu-example  
  
 </code></pre>
 <p>At this point, a blockchain has been activated. In the future, more blockchain nodes can be added to <a href="5.5%E5%BB%BA%E7%AB%8B%E5%8C%BA%E5%9D%97%E9%93%BE%E7%BD%91%E7%BB%9C.html">build a blockchain network</a>。</p>
