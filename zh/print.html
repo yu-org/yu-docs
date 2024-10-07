@@ -177,69 +177,92 @@
 <pre><code>go get github.com/yu-org/yu
 </code></pre>
 <h4><a class="header" href="#开发一个链上的-writing-和-reading" id="开发一个链上的-writing-和-reading">开发一个链上的 Writing 和 Reading</a></h4>
-<pre><code class="language-go">import (
-	&quot;github.com/yu-org/yu/apps/pow&quot;
-	. &quot;github.com/yu-org/yu/core/types&quot;
-	&quot;github.com/yu-org/yu/env&quot;
-	&quot;github.com/yu-org/yu/common&quot;
-	&quot;github.com/yu-org/yu/context&quot;
-	&quot;github.com/yu-org/yu/startup&quot;
-	&quot;github.com/yu-org/yu/tripod&quot;
+<pre><code class="language-go">package main
+
+import (
+	&quot;github.com/yu-org/yu/apps/poa&quot;
+	&quot;github.com/yu-org/yu/core/context&quot;
+	&quot;github.com/yu-org/yu/core/startup&quot;
+	&quot;github.com/yu-org/yu/core/tripod&quot;
+	&quot;net/http&quot;
 )
 
-type Example struct {
+type QuickStart struct {
 	*tripod.Tripod
+}
+
+func NewQuickStart() *QuickStart {
+	tri := &amp;QuickStart{
+		tripod.NewTripod(),
+	}
+	// 此处需要手动将自定义的 Writing 注册到 tripod 中，
+	tri.SetWritings(tri.WriteA)
+	// 此处需要手动将自定义的 Reading 注册到 tripod 中
+	tri.SetReadings(tri.ReadA)
+	return tri
+}
+
+type WriteRequest struct {
+	Key   string `json:&quot;key&quot;`
+	Value string `json:&quot;value&quot;`
 }
 
 // 此处定制开发一个 Writing
 // Writing会被全网节点共识并执行
-func (e *Example) WriteA(ctx *context.WriteContext) error {
-	caller := ctx.GetCaller() 
+func (q *QuickStart) WriteA(ctx *context.WriteContext) error {
 	// 设置该 writing 所需消耗的lei (lei和gas同义)
-	ctx.SetLei(100) 
+	ctx.SetLei(100)
+	// 解析请求体
+	req := new(WriteRequest)
+	err := ctx.BindJson(req)
+	if err != nil {
+		return err
+	}
 	// 将数据存入链上状态中。
-	e.Set(caller.Bytes(), []byte(&quot;yu&quot;)) 
+	q.Set([]byte(req.Key), []byte(req.Value))
 	// 向链外发射一个event
 	ctx.EmitStringEvent(&quot;execute success&quot;)
 	return nil
 }
 
-// 此处定制开发一个 Reading
-func (e *Example) ReadA(ctx *context.ReadContext) {
-	key := ctx.GetString(&quot;key&quot;)
-	value, err := e.Get(key.Bytes())
-	if err != nil {
-		ctx.JsonOk(err)
-		return 
-	}
-	ctx.JsonOk(string(value))
+type ReadRequest struct {
+	Key string `json:&quot;key&quot;`
 }
+
+// 此处定制开发一个 Reading
+func (q *QuickStart) ReadA(ctx *context.ReadContext) {
+	req := new(ReadRequest)
+	err := ctx.BindJson(req)
+	if err != nil {
+		ctx.Err(http.StatusBadRequest, err)
+		return
+	}
+	value, err := q.Get([]byte(req.Key))
+	if err != nil {
+		ctx.ErrOk(err)
+		return
+	}
+	ctx.JsonOk(value)
+}
+
 
 </code></pre>
 <h4><a class="header" href="#在main函数中添加-tripods" id="在main函数中添加-tripods">在main函数中添加 tripods</a></h4>
-<pre><code class="language-go">func NewExample() *Example {
-	df := tripod.NewTripod()
-	e := &amp;Example{df}
+<pre><code class="language-go">func main() {
+    // 启用poa tripod的默认配置
+    poaCfg := poa.DefaultCfg(0)
+    // 启用yu的默认配置
+    yuCfg := startup.InitDefaultKernelConfig()
 
-	// 此处需要手动将自定义的 Writing 注册到 tripod 中，
-	e.SetWritings(e.WriteA) 
-	// 此处需要手动将自定义的 Reading 注册到 tripod 中
-	e.SetReadings(e.ReadA)
-
-	return e
-}
-
-func main() {
-	// 启用默认的配置
-	poaConf := poa.DefaultCfg(0)
-	startup.InitDefaultKernelConfig()
-	startup.DefaultStartup(poa.NewPoa(poaConf), NewExample())
+    poaTri := poa.NewPoa(poaCfg)
+    qsTri := NewQuickStart()
+    startup.DefaultStartup(yuCfg, poaTri, qsTri)
 }
 </code></pre>
 <h4><a class="header" href="#运行" id="运行">运行</a></h4>
-<pre><code class="language-zsh">go build -o yu-poa-example
+<pre><code class="language-zsh">go build -o yu-example
 
-./yu-poa-example 
+./yu-example 
  
 </code></pre>
 <p>至此，一条区块链便启动起来了。 后续可以加入更多区块链节点来<a href="5.5%E5%BB%BA%E7%AB%8B%E5%8C%BA%E5%9D%97%E9%93%BE%E7%BD%91%E7%BB%9C.html">构建区块链网络</a>。</p>
