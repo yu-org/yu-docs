@@ -251,10 +251,8 @@ func (q *QuickStart) ReadA(ctx *context.ReadContext) {
 	ctx.JsonOk(ReadResponse{Value: string(value)})
 }
 
-
-</code></pre>
-<h4><a class="header" href="#在main函数中添加-tripods" id="在main函数中添加-tripods">在main函数中添加 tripods</a></h4>
-<pre><code class="language-go">func main() {
+// Load tripods and start up the chain
+func main() {
     // default poa tripod config
     poaCfg := poa.DefaultCfg(0)
     // default yu config
