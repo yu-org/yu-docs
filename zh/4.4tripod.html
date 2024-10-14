@@ -176,7 +176,7 @@ func SetChainEnv(env *ChainEnv)
 <pre><code class="language-go">func CheckTxn(*SignedTxn) error
 func VerifyBlock(block *Block) bool
 </code></pre>
-<p><code>checkTxn()</code>是开发者自定义的交易检查逻辑，前面的章节提到过当外部有交易进来插入<code>txpool</code>的时候，会执行<code>BaseChack</code> 和 <code>TripodsCheck</code> 这两步检查，
+<p><code>checkTxn()</code>是开发者自定义的交易检查逻辑，前面的章节提到过当外部有交易进来插入<code>txpool</code>的时候，会执行<code>BaseCheck</code> 和 <code>TripodsCheck</code> 这两步检查，
 而<code>TripodsCheck</code>便是在这里定义，每个<code>tripod</code>都可以定义自己的交易检查逻辑。<br />
 <code>VerifyBlock()</code>是开发者自定义的区块校验逻辑，区块链每收到一个外部广播来的区块都需要校验过后才能进行后续处理，不同的链有对区块不同的校验方式，所以 
 开发者可以自己定制校验逻辑。 每个<code>tripod</code>都可以定义自己的交易检查逻辑。</p>

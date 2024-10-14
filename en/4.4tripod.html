@@ -175,7 +175,7 @@ func SetChainEnv(env *ChainEnv)
 <pre><code class="language-go">func CheckTxn(*SignedTxn) error
 func VerifyBlock(block *Block) bool
 </code></pre>
-<p><code>checkTxn()</code> is a developer-defined transaction check logic. As mentioned in the previous chapter, when an external transaction is inserted into <code>txpool</code>, the two steps of <code>BaseChack</code> and <code>TripodsCheck</code> will be executed.
+<p><code>checkTxn()</code> is a developer-defined transaction check logic. As mentioned in the previous chapter, when an external transaction is inserted into <code>txpool</code>, the two steps of <code>BaseCheck</code> and <code>TripodsCheck</code> will be executed.
 And <code>TripodsCheck</code> is defined here, each <code>tripod</code> can define its own transaction check logic.</p>
 <p><code>VerifyBlock()</code> is a developer-defined block verification logic. Every time the blockchain receives a block from external broadcast, it needs to be verified before it can be processed. Different chains have different verifications for blocks. test method, so
 Developers can customize the validation logic by themselves. Each <code>tripod</code> can define its own transaction checking logic.</p>
