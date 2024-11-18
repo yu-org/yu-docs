@@ -242,7 +242,9 @@ func main() {
 
     poaTri := poa.NewPoa(poaCfg)
     qsTri := NewQuickStart()
-	startup.InitDefaultKernel(yuCfg).WithTripods(poaTri, qsTri).Startup()
+	startup.InitDefaultKernel(yuCfg).
+		WithTripods(poaTri, qsTri).
+		Startup()
 }
 </code></pre>
 <h4><a class="header" href="#run" id="run">Run</a></h4>
